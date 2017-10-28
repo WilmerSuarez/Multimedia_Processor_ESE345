@@ -6,9 +6,14 @@
 -- Module Name: register_file - Behavioral
 -- Project Name: Multimedia_Unit
 -- Target Devices: 
--- Tool Versions: 
+-- Tool Versions: Vivado 2017.3
+--
 -- Description: 32 Registers, 64-bits Wide
--- 
+-- There can be 3 reads (2or3 64-bit registers can be read) and 1 write 
+-- (1 64-bit value can be written when write enable is asserted) each cycle.
+-- Data forwarding must be used so that a write and read to the same register 
+-- returns the new value for the read.
+
 -- Dependencies: 
 -- 
 -- Revision:
@@ -19,23 +24,48 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity register_file is
     Port (
-          write_enable : in std_logic; -- Asserted when a write 
-          write_reg_select : in std_logic_vector(4 downto 0);
-          read_A_select : in std_logic_vector(4 downto 0);
-          read_B_select : in std_logic_vector(4 downto 0);
-          read_C_select : in std_logic_vector(4 downto 0);
-          reg_A_out : out std_logic_vector(63 downto 0); 
-          reg_B_out : out std_logic_vector(63 downto 0);
-          reg_C_out : out std_logic_vector(63 downto 0);
-          data_in : in std_logic_vector(63 downto 0)
+          write_enable : in std_logic; -- Asserted when data needs to be written
+          write_reg_select : in std_logic_vector(4 downto 0); -- Selects the register to be written to
+          data_in : in std_logic_vector(63 downto 0); -- Data to be written when write_enable is asserted
+          reg_A_select : in std_logic_vector(4 downto 0); -- Selects register A to be read
+          reg_B_select : in std_logic_vector(4 downto 0); -- Selects register B to be read
+          reg_C_select : in std_logic_vector(4 downto 0); -- Selects register C to be read
+          reg_A_out : out std_logic_vector(63 downto 0); -- Ouput of read register A
+          reg_B_out : out std_logic_vector(63 downto 0); -- Output of read register B
+          reg_C_out : out std_logic_vector(63 downto 0); -- Output of read register C
+          clk : in std_logic -- clk
           );
 end register_file;
 
 architecture Behavioral of register_file is
-
+type reg_file_type is array(0 to 31) of std_logic_vector(63 downto 0);
+signal reg_file_array: reg_file_type;
 begin
-    
+    reg_file_proc : process(clk) is
+    begin
+        if(rising_edge(clk)) then -- When the clock is at a rising edge
+    --****************************** READING_REGISTERS ******************************--
+            reg_A_out <= reg_file_array(to_integer(unsigned(reg_A_select))); -- Read register A
+            reg_B_out <= reg_file_array(to_integer(unsigned(reg_B_select))); -- Read register B
+            reg_C_out <= reg_file_array(to_integer(unsigned(reg_C_select))); -- Read register C
+            
+    --****************************** WRITING_&_DATA_FORWARDING ******************************-- 
+                if(write_enable = '1') then -- When write enable is asserted
+                    reg_file_array(to_integer(unsigned(write_reg_select))) <= data_in; -- put the data coming in, into the register selected to be written to
+                    if(reg_A_select = write_reg_select) then -- Data Forwarding for A
+                        reg_A_out <= data_in;
+                    end if;
+                    if(reg_B_select = write_reg_select) then -- Data Forwarding for B
+                        reg_B_out <= data_in;
+                    end if;
+                    if(reg_C_select = write_reg_select) then -- Data Forwarding for C
+                        reg_C_out <= data_in;
+                    end if;
+                end if;
+        end if;
+    end process reg_file_proc;
 end Behavioral;
