@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Wed Nov  1 00:51:12 2017
+# Process ID: 12156
+# Current directory: C:/Users/Anvi/Desktop/ESE_Project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1
+# Command line: vivado.exe -log register_file.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source register_file.tcl
+# Log file: C:/Users/Anvi/Desktop/ESE_Project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1/register_file.vds
+# Journal file: C:/Users/Anvi/Desktop/ESE_Project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source register_file.tcl -notrace

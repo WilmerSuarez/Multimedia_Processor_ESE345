@@ -47,25 +47,18 @@ signal reg_file_array: reg_file_type;
 begin
     reg_file_proc : process(clk) is
     begin
-        if(rising_edge(clk)) then -- When the clock is at a rising edge
-    --****************************** READING_REGISTERS ******************************--
+--************************************* WRITING_DATA ************************************-- 
+        if(rising_edge(clk)) then
+            if(write_enable = '1') then -- When write enable is asserted
+                reg_file_array(to_integer(unsigned(write_reg_select))) <= data_in; -- write data to selected register 
+            end if;
+        end if;
+        
+--********************************** READING_REGISTERS **********************************--
+        if(falling_edge(clk)) then -- When the clock is at a rising edge
             reg_A_out <= reg_file_array(to_integer(unsigned(reg_A_select))); -- Read register A
             reg_B_out <= reg_file_array(to_integer(unsigned(reg_B_select))); -- Read register B
             reg_C_out <= reg_file_array(to_integer(unsigned(reg_C_select))); -- Read register C
-            
-    --****************************** WRITING_&_DATA_FORWARDING ******************************-- 
-                if(write_enable = '1') then -- When write enable is asserted
-                    reg_file_array(to_integer(unsigned(write_reg_select))) <= data_in; -- put the data coming in, into the register selected to be written to
-                    if(reg_A_select = write_reg_select) then -- Data Forwarding for A
-                        reg_A_out <= data_in;
-                    end if;
-                    if(reg_B_select = write_reg_select) then -- Data Forwarding for B
-                        reg_B_out <= data_in;
-                    end if;
-                    if(reg_C_select = write_reg_select) then -- Data Forwarding for C
-                        reg_C_out <= data_in;
-                    end if;
-                end if;
         end if;
     end process reg_file_proc;
 end Behavioral;
