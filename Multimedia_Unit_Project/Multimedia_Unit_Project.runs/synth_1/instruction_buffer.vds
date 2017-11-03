@@ -1,13 +1,14 @@
-
-*** Running vivado
-    with args -log instruction_buffer.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source instruction_buffer.tcl
-
-
-****** Vivado v2017.3 (64-bit)
-  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
-  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
-
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Fri Nov  3 11:51:42 2017
+# Process ID: 14032
+# Current directory: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1
+# Command line: vivado.exe -log instruction_buffer.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source instruction_buffer.tcl
+# Log file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1/instruction_buffer.vds
+# Journal file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
 source instruction_buffer.tcl -notrace
 Command: synth_design -top instruction_buffer -part xc7a35tcpg236-1
 Starting synth_design

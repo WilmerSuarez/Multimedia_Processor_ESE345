@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Anvi/Desktop/ESE_Project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1'
+HD_PWD='C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log register_file.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source register_file.tcl
+EAStep vivado -log instruction_buffer.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source instruction_buffer.tcl

@@ -1,13 +1,13 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Wed Nov  1 00:51:34 2017
-| Host         : DESKTOP-1BP5EK1 running 64-bit major release  (build 9200)
-| Command      : report_utilization -file register_file_utilization_synth.rpt -pb register_file_utilization_synth.pb
-| Design       : register_file
+| Date         : Fri Nov  3 11:59:45 2017
+| Host         : Himanshu-PC running 64-bit major release  (build 9200)
+| Command      : report_utilization -file instruction_buffer_utilization_synth.rpt -pb register_file_utilization_synth.pb
+| Design       : instruction_buffer
 | Device       : 7a35tcpg236-1
 | Design State : Synthesized
----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 
 Utilization Design Information
 
@@ -64,14 +64,13 @@ Table of Contents
 2. Memory
 ---------
 
-+-------------------+------+-------+-----------+-------+
-|     Site Type     | Used | Fixed | Available | Util% |
-+-------------------+------+-------+-----------+-------+
-| Block RAM Tile    |    3 |     0 |        50 |  6.00 |
-|   RAMB36/FIFO*    |    3 |     0 |        50 |  6.00 |
-|     RAMB36E1 only |    3 |       |           |       |
-|   RAMB18          |    0 |     0 |       100 |  0.00 |
-+-------------------+------+-------+-----------+-------+
++----------------+------+-------+-----------+-------+
+|    Site Type   | Used | Fixed | Available | Util% |
++----------------+------+-------+-----------+-------+
+| Block RAM Tile |    0 |     0 |        50 |  0.00 |
+|   RAMB36/FIFO* |    0 |     0 |        50 |  0.00 |
+|   RAMB18       |    0 |     0 |       100 |  0.00 |
++----------------+------+-------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E1 or one FIFO18E1. However, if a FIFO18E1 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E1
 
 
@@ -88,26 +87,26 @@ Table of Contents
 4. IO and GT Specific
 ---------------------
 
-+-----------------------------+------+-------+-----------+--------+
-|          Site Type          | Used | Fixed | Available |  Util% |
-+-----------------------------+------+-------+-----------+--------+
-| Bonded IOB                  |  278 |     0 |       106 | 262.26 |
-| Bonded IPADs                |    0 |     0 |        10 |   0.00 |
-| Bonded OPADs                |    0 |     0 |         4 |   0.00 |
-| PHY_CONTROL                 |    0 |     0 |         5 |   0.00 |
-| PHASER_REF                  |    0 |     0 |         5 |   0.00 |
-| OUT_FIFO                    |    0 |     0 |        20 |   0.00 |
-| IN_FIFO                     |    0 |     0 |        20 |   0.00 |
-| IDELAYCTRL                  |    0 |     0 |         5 |   0.00 |
-| IBUFDS                      |    0 |     0 |       104 |   0.00 |
-| GTPE2_CHANNEL               |    0 |     0 |         2 |   0.00 |
-| PHASER_OUT/PHASER_OUT_PHY   |    0 |     0 |        20 |   0.00 |
-| PHASER_IN/PHASER_IN_PHY     |    0 |     0 |        20 |   0.00 |
-| IDELAYE2/IDELAYE2_FINEDELAY |    0 |     0 |       250 |   0.00 |
-| IBUFDS_GTE2                 |    0 |     0 |         2 |   0.00 |
-| ILOGIC                      |    0 |     0 |       106 |   0.00 |
-| OLOGIC                      |    0 |     0 |       106 |   0.00 |
-+-----------------------------+------+-------+-----------+--------+
++-----------------------------+------+-------+-----------+-------+
+|          Site Type          | Used | Fixed | Available | Util% |
++-----------------------------+------+-------+-----------+-------+
+| Bonded IOB                  |   24 |     0 |       106 | 22.64 |
+| Bonded IPADs                |    0 |     0 |        10 |  0.00 |
+| Bonded OPADs                |    0 |     0 |         4 |  0.00 |
+| PHY_CONTROL                 |    0 |     0 |         5 |  0.00 |
+| PHASER_REF                  |    0 |     0 |         5 |  0.00 |
+| OUT_FIFO                    |    0 |     0 |        20 |  0.00 |
+| IN_FIFO                     |    0 |     0 |        20 |  0.00 |
+| IDELAYCTRL                  |    0 |     0 |         5 |  0.00 |
+| IBUFDS                      |    0 |     0 |       104 |  0.00 |
+| GTPE2_CHANNEL               |    0 |     0 |         2 |  0.00 |
+| PHASER_OUT/PHASER_OUT_PHY   |    0 |     0 |        20 |  0.00 |
+| PHASER_IN/PHASER_IN_PHY     |    0 |     0 |        20 |  0.00 |
+| IDELAYE2/IDELAYE2_FINEDELAY |    0 |     0 |       250 |  0.00 |
+| IBUFDS_GTE2                 |    0 |     0 |         2 |  0.00 |
+| ILOGIC                      |    0 |     0 |       106 |  0.00 |
+| OLOGIC                      |    0 |     0 |       106 |  0.00 |
++-----------------------------+------+-------+-----------+-------+
 
 
 5. Clocking
@@ -116,7 +115,7 @@ Table of Contents
 +------------+------+-------+-----------+-------+
 |  Site Type | Used | Fixed | Available | Util% |
 +------------+------+-------+-----------+-------+
-| BUFGCTRL   |    1 |     0 |        32 |  3.13 |
+| BUFGCTRL   |    0 |     0 |        32 |  0.00 |
 | BUFIO      |    0 |     0 |        20 |  0.00 |
 | MMCME2_ADV |    0 |     0 |         5 |  0.00 |
 | PLLE2_ADV  |    0 |     0 |         5 |  0.00 |
@@ -150,10 +149,7 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUF     |  192 |                  IO |
-| IBUF     |   86 |                  IO |
-| RAMB36E1 |    3 |        Block Memory |
-| BUFG     |    1 |               Clock |
+| OBUF     |   24 |                  IO |
 +----------+------+---------------------+
 
 
