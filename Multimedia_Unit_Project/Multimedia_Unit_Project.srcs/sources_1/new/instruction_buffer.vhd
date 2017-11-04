@@ -4,28 +4,22 @@
 -- Create Date: 11/03/2017 11:28:01 AM
 -- Design Name: Instruction Buffer
 -- Module Name: instruction_buffer - Behavioral
--- Project Name: 
+-- Project Name: Multimedia Processor
 -- Target Devices: 
--- Tool Versions: 
+-- Tool Versions: Vivado 2017.3
 -- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
 ----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity instruction_buffer is
-    Port ( PC_in : in STD_LOGIC_VECTOR (4 downto 0);
-           instr : out STD_LOGIC_VECTOR (23 downto 0);
-           clk : in STD_LOGIC);
+    Port ( 
+          PC_in : in STD_LOGIC_VECTOR (4 downto 0);
+          instr : out STD_LOGIC_VECTOR (23 downto 0);
+          clk : in STD_LOGIC
+          );
 end instruction_buffer;
 
 architecture Behavioral of instruction_buffer is
