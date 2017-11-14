@@ -1,5 +1,4 @@
 ----------------------------------------------------------------------------------
--- Company: Stony Brook University
 -- Engineer (s): Wilmer Suarez, Himanshu 
 -- 
 -- Create Date: 10/30/2017 11:31:38 PM
@@ -78,9 +77,8 @@ begin
 --***************************** STIMULUS_PROCESS ******************************-- 
        stimulus: process
        begin
-             wait for 100 ns;
+           wait for 100 ns;
              
-           --
            reg_A_select <= "00000";
            reg_B_select <= "00000";
            reg_C_select <= "00000";

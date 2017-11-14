@@ -20,7 +20,6 @@ entity multimedia_ALU is
         opcode : in std_logic_vector(3 downto 0);      
         reg_S1 : in std_logic_vector(63 downto 0);
         reg_S2 : in std_logic_vector(63 downto 0);
-        reg_S3 : in std_logic_vector(63 downto 0);
         result : out std_logic_vector(63 downto 0)
     );
 end multimedia_ALU;
