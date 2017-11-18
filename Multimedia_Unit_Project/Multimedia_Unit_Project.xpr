@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="32" Path="C:/Users/Anvi/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr">
+<Project Version="7" Minor="32" Path="C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="8962e72d61834c9f8d6bad901fd610db"/>
@@ -125,6 +125,13 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/li_shift.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/decoder.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>

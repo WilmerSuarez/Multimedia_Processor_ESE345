@@ -32,5 +32,18 @@ end li_shift;
 
 architecture Behavioral of li_shift is
 begin
-    
+    li_shift_proc : process is
+    begin
+        Result <= (others => '0');
+        case LI_Offset is
+            when "00" =>
+                Result(15 downto 0) <= Immediate_16;
+            when "01" =>
+                Result(31 downto 16) <= Immediate_16;
+            when "10" =>
+                Result(47 downto 32) <= Immediate_16;
+            when "11" =>
+                Result(63 downto 48) <= Immediate_16;
+        end case; 
+    end process;
 end Behavioral;
