@@ -20,19 +20,21 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
---use IEEE.NUMERIC_STD.ALL;
 
 entity IF_ID_REG is
     Port (
-          clk : in std_logic;
-          instruction_in : in std_logic_vector(23 downto 0);
-          instruction_out : out std_logic_vector(23 downto 0)
+          CLK : in std_logic;
+          Instruction_In : in std_logic_vector(23 downto 0);
+          Instruction_Out : out std_logic_vector(23 downto 0)
           );
 end IF_ID_REG;
 
 architecture Behavioral of IF_ID_REG is
-
 begin
-
-
+    IF_ID_Proc : process(CLK) is
+    begin
+        if(rising_edge(CLK)) then
+            Instruction_Out <= Instruction_In;
+        end if;
+    end process IF_ID_Proc;
 end Behavioral;

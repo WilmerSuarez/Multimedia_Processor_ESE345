@@ -23,18 +23,18 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity program_counter_reg is
     Port(
-         clk : in std_logic;
-         pc_in : in std_logic_vector(4 downto 0);
-         pc_out : out std_logic_vector(4 downto 0)
+         CLK : in std_logic;
+         PC_In : in std_logic_vector(4 downto 0);
+         PC_Out : out std_logic_vector(4 downto 0)
          );
 end program_counter_reg;
 
 architecture Behavioral of program_counter_reg is
 begin
-    PC : process(clk) is
+    PC : process(CLK) is
     begin
-        if(rising_edge(clk)) then
-            pc_out <= std_logic_vector(unsigned(pc_in) + 1);
+        if(rising_edge(CLK)) then
+            PC_Out <= std_logic_vector(unsigned(PC_In) + 1);
         end if;
     end process PC;
 end Behavioral;

@@ -21,16 +21,15 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity register_file is
     Port (
-          write_enable : in STD_LOGIC; -- Asserted when data needs to be written
-          write_reg_select : in STD_LOGIC_VECTOR(4 downto 0); -- Selects the register to be written
-          data_in : in STD_LOGIC_VECTOR(63 downto 0); -- Data to be written when write_enable is asserted
-          reg_S1_select : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S1 to be read
-          reg_S2_select : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S2 to be read
-          reg_S3_select : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S3 to be read
-          reg_S1_out : out STD_LOGIC_VECTOR(63 downto 0); -- Ouput of read register S1
-          reg_S2_out : out STD_LOGIC_VECTOR(63 downto 0); -- Output of read register S2
-          reg_S3_out : out STD_LOGIC_VECTOR(63 downto 0); -- Output of read register S3
-          clk : in STD_LOGIC -- Clock
+          Write_Register : in STD_LOGIC_VECTOR(4 downto 0); -- Selects the register to be written
+          Data_In : in STD_LOGIC_VECTOR(63 downto 0); -- Data to be written when write_enable is asserted
+          Read_Register_S1 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S1 to be read
+          Read_Register_S2 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S2 to be read
+          Read_Register_S3 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S3 to be read
+          Data_S1 : out STD_LOGIC_VECTOR(63 downto 0); -- Ouput of read register S1
+          Data_S2 : out STD_LOGIC_VECTOR(63 downto 0); -- Output of read register S2
+          Data_S3 : out STD_LOGIC_VECTOR(63 downto 0); -- Output of read register S3
+          CLK : in STD_LOGIC -- Clock
           );
 end register_file;
 
@@ -39,19 +38,17 @@ type reg_file_type is array(0 to 31) of std_logic_vector(63 downto 0);
 signal reg_file_array: reg_file_type;
 begin
     --******************************** REG_FILE_PROCESS *******************************-- 
-    reg_file_proc : process(clk) is
+    Reg_File_Proc : process(CLK) is
     begin
     --********************************** WRITING_DATA *********************************-- 
         if(rising_edge(clk)) then -- When the clock is at a rising edge
-            if(write_enable = '1') then -- When write enable is asserted
-                reg_file_array(to_integer(unsigned(write_reg_select))) <= data_in; -- Write data to selected register 
-            end if;
+            reg_file_array(to_integer(unsigned(Write_Register))) <= Data_In; -- Write data to selected register 
         end if;      
     --******************************* READING_REGISTERS *******************************--
         if(falling_edge(clk)) then -- When the clock is at a falling edge
-            reg_S1_out <= reg_file_array(to_integer(unsigned(reg_S1_select))); -- Read register S1
-            reg_S2_out <= reg_file_array(to_integer(unsigned(reg_S2_select))); -- Read register S2
-            reg_S3_out <= reg_file_array(to_integer(unsigned(reg_S3_select))); -- Read register S3
+            Data_S1 <= reg_file_array(to_integer(unsigned(Read_Register_S1))); -- Read register S1
+            Data_S2 <= reg_file_array(to_integer(unsigned(Read_Register_S2))); -- Read register S2
+            Data_S3 <= reg_file_array(to_integer(unsigned(Read_Register_S3))); -- Read register S3
         end if;
-    end process reg_file_proc;
+    end process Reg_File_Proc;
 end Behavioral;

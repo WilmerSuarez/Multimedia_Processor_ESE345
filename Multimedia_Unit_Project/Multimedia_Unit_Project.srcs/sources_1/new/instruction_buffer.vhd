@@ -16,9 +16,9 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity instruction_buffer is
     Port ( 
-          PC_in : in STD_LOGIC_VECTOR (4 downto 0);
-          instr : out STD_LOGIC_VECTOR (23 downto 0);
-          clk : in STD_LOGIC
+          CLK : in STD_LOGIC;
+          PC_In : in STD_LOGIC_VECTOR (4 downto 0);
+          Instruction : out STD_LOGIC_VECTOR (23 downto 0)
           );
 end instruction_buffer;
 
@@ -26,10 +26,10 @@ architecture Behavioral of instruction_buffer is
 type inst_buf_type is array(0 to 31) of std_logic_vector(23 downto 0);
 signal inst_buf : inst_buf_type;
 begin
-    inst_buf_proc : process(clk) is
+    inst_buf_proc : process(CLK) is
     begin
-        if (rising_edge(clk)) then
-            instr <= inst_buf(to_integer(unsigned(PC_in)));
+        if (rising_edge(CLK)) then
+            Instruction <= inst_buf(to_integer(unsigned(PC_In)));
         end if;
     end process inst_buf_proc;
 end Behavioral;
