@@ -17,7 +17,6 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -32,7 +31,7 @@ end li_shift;
 
 architecture Behavioral of li_shift is
 begin
-    li_shift_proc : process is
+    li_shift_proc : process(Immediate_16, LI_Offset) is
     begin
         Result <= (others => '0');
         case LI_Offset is
@@ -45,5 +44,5 @@ begin
             when "11" =>
                 Result(63 downto 48) <= Immediate_16;
         end case; 
-    end process;
+    end process li_shift_proc;
 end Behavioral;

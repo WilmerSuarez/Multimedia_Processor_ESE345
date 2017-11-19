@@ -86,32 +86,19 @@ begin
                     end loop;  
                 --********************************** ROT_OP *********************************-- 
                 when ROT_OP =>
-                    count := to_integer(unsigned(reg_S2(5 downto 0)));
-                    result <= std_logic_vector(rotate_right(unsigned(reg_S1), count));
+                
                 --********************************* SHLHI_OP ********************************--
                 when SHLHI_OP =>
                 
                 --*********************************** A_OP **********************************--
                 when A_OP =>
-                for i in 0 to 1 loop
-                    minuend := to_integer(unsigned(reg_S1((i+1)*32-1 downto i*32)));
-                    subtrahend := to_integer(unsigned(reg_S2((i+1)*32-1 downto i*32)));
-                    result((i+1)*32-1 downto i*32) <= std_logic_vector(to_unsigned((minuend + subtrahend), 32));
-                end loop;
+                
                 --********************************** SFW_OP *********************************--
                 when SFW_OP =>
-                for i in 0 to 1 loop
-                    minuend := to_integer(unsigned(reg_S1((i+1)*32-1 downto i*32)));
-                    subtrahend := to_integer(unsigned(reg_S2((i+1)*32-1 downto i*32)));
-                    result((i+1)*32-1 downto i*32) <= std_logic_vector(to_unsigned((minuend - subtrahend), 32));
-                end loop;
+                
                 --********************************** AH_OP **********************************--
                 when AH_OP =>
-                for i in 0 to 3 loop
-                    minuend := to_integer(unsigned(reg_S1((i+1)*16-1 downto i*16)));
-                    subtrahend := to_integer(unsigned(reg_S2((i+1)*16-1 downto i*16)));
-                    result((i+1)*16-1 downto i*16) <= std_logic_vector(to_unsigned((minuend + subtrahend), 16));
-                end loop;
+                
                 --********************************** SFH_OP *********************************--
                 when SFH_OP =>
                 for i in 0 to 3 loop

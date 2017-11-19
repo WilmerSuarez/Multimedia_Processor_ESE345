@@ -24,21 +24,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ID_EX_WB_REG is
     Port (
           CLK : in std_logic;
-          ALU_Select : in std_logic_vector(1 downto 0);
+          Result_Select : in std_logic_vector(1 downto 0);
           Register_RD : in std_logic_vector(4 downto 0);
           Immediate_16 : in std_logic_vector(15 downto 0);
           LI_Offset : in std_logic_vector(1 downto 0);
-          R3_R4_Type : in std_logic;
           Opcode_R4 : in std_logic_vector(1 downto 0);
           Opcode_R3 : in std_logic_vector(3 downto 0);
           Data_S1 : in std_logic_vector(63 downto 0);
           Data_S2 : in std_logic_vector(63 downto 0);
           Data_S3 : in std_logic_vector(63 downto 0);
-          ALU_Select_o : out std_logic_vector(1 downto 0);
+          Result_Select_o : out std_logic_vector(1 downto 0);
           Register_RD_o : out std_logic_vector(4 downto 0);
           Immediate_16_o : out std_logic_vector(15 downto 0);
           LI_Offset_o : out std_logic_vector(1 downto 0);
-          R3_R4_Type_o : out std_logic;
           Opcode_R4_o : out std_logic_vector(1 downto 0);
           Opcode_R3_o : out std_logic_vector(3 downto 0);
           Data_S1_o : out std_logic_vector(63 downto 0);
@@ -58,11 +56,10 @@ begin
             Data_S3_o <= Data_S3;
             Opcode_R3_o <= Opcode_R3;
             Opcode_R4_o <= Opcode_R4;
-            R3_R4_Type_o <= R3_R4_Type;
             Register_RD_o <= Register_RD;
             Immediate_16_o <= Immediate_16;
             LI_Offset_o <= LI_Offset;
-            ALU_Select_o <= ALU_Select;
+            Result_Select_o <= Result_Select;
         end if;
     end process ID_EX_WB_Reg_Proc;
 end Behavioral;
