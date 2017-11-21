@@ -88,3 +88,6 @@
 !*.docx
 !*.opj
 !*.dsn
+!*.pdf
+!*.jpg
+!*.svg

@@ -19,6 +19,7 @@ entity program_counter_reg is
          --***** INPUTS *****--
          CLK : in std_logic;    -- Clock
          PC_In : in std_logic_vector(4 downto 0);   -- Program counter value to be incremented 
+         reset : in std_logic;  -- 
          --***** OUTPUT *****--
          PC_Out : out std_logic_vector(4 downto 0)  -- Program counter value used as instruction buffer address
          );
@@ -28,7 +29,9 @@ architecture Behavioral of program_counter_reg is
 begin
     PC : process(CLK) is
     begin
-        if(rising_edge(CLK)) then   -- When rising edge of the clock 
+        if reset = '1' then
+            PC_Out <= "00000";
+        elsif (rising_edge(CLK)) then   -- When rising edge of the clock 
             PC_Out <= std_logic_vector(unsigned(PC_In) + 1);    -- Increment Program Counter value 
         end if;
     end process PC;
