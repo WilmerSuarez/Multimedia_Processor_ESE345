@@ -5,7 +5,6 @@
 -- Design Name: Register File
 -- Module Name: register_file - Behavioral
 -- Project Name: Multimedia_Processor
--- Target Devices: 
 -- Tool Versions: Vivado 2017.3
 --
 -- Description: 32 Registers, 64-bits Wide
@@ -21,34 +20,36 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity register_file is
     Port (
+          --***** INPUTS *****--
+          CLK : in STD_LOGIC; -- Clock
           Write_Register : in STD_LOGIC_VECTOR(4 downto 0); -- Selects the register to be written
           Data_In : in STD_LOGIC_VECTOR(63 downto 0); -- Data to be written when write_enable is asserted
           Read_Register_S1 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S1 to be read
           Read_Register_S2 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S2 to be read
           Read_Register_S3 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S3 to be read
+          --***** OUTPUTS *****--
           Data_S1 : out STD_LOGIC_VECTOR(63 downto 0); -- Ouput of read register S1
           Data_S2 : out STD_LOGIC_VECTOR(63 downto 0); -- Output of read register S2
-          Data_S3 : out STD_LOGIC_VECTOR(63 downto 0); -- Output of read register S3
-          CLK : in STD_LOGIC -- Clock
+          Data_S3 : out STD_LOGIC_VECTOR(63 downto 0) -- Output of read register S3   
           );
 end register_file;
 
 architecture Behavioral of register_file is
-type reg_file_type is array(0 to 31) of std_logic_vector(63 downto 0);
+type reg_file_type is array(0 to 31) of std_logic_vector(63 downto 0);  -- Array of 32 Registers
 signal reg_file_array: reg_file_type;
 begin
     --******************************** REG_FILE_PROCESS *******************************-- 
     Reg_File_Proc : process(CLK) is
     begin
     --********************************** WRITING_DATA *********************************-- 
-        if(rising_edge(clk)) then -- When the clock is at a rising edge
-            reg_file_array(to_integer(unsigned(Write_Register))) <= Data_In; -- Write data to selected register 
+        if(rising_edge(clk)) then   -- When the clock is at a rising edge
+            reg_file_array(to_integer(unsigned(Write_Register))) <= Data_In;    -- Write data to selected register 
         end if;      
     --******************************* READING_REGISTERS *******************************--
         if(falling_edge(clk)) then -- When the clock is at a falling edge
-            Data_S1 <= reg_file_array(to_integer(unsigned(Read_Register_S1))); -- Read register S1
-            Data_S2 <= reg_file_array(to_integer(unsigned(Read_Register_S2))); -- Read register S2
-            Data_S3 <= reg_file_array(to_integer(unsigned(Read_Register_S3))); -- Read register S3
+            Data_S1 <= reg_file_array(to_integer(unsigned(Read_Register_S1)));  -- Read register S1
+            Data_S2 <= reg_file_array(to_integer(unsigned(Read_Register_S2)));  -- Read register S2
+            Data_S3 <= reg_file_array(to_integer(unsigned(Read_Register_S3)));  -- Read register S3
         end if;
     end process Reg_File_Proc;
 end Behavioral;

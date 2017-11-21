@@ -5,11 +5,9 @@
 -- Design Name: Multimedia_ALU_2
 -- Module Name: multimedia_ALU_2 - Behavioral
 -- Project Name: Multimedia Processor
--- Target Devices: 
 -- Tool Versions: Vivado 2017.3
--- Description: 
--- 
--- Dependencies: 
+--
+-- Description: This Arithmetic Logic Unit executes R4 format instructions.
 ----------------------------------------------------------------------------------
 
 library IEEE;
@@ -18,11 +16,13 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity multimedia_ALU_2 is
     Port (
-          opcode : in std_logic_vector(1 downto 0);      
-          reg_S1 : in std_logic_vector(63 downto 0);
-          reg_S2 : in std_logic_vector(63 downto 0);
-          reg_S3 : in std_logic_vector(63 downto 0);
-          result : out std_logic_vector(63 downto 0)
+          --***** INPUTS *****--
+          opcode : in std_logic_vector(1 downto 0); -- Opcode for R4 instruction format
+          reg_S1 : in std_logic_vector(63 downto 0);    -- Register RS1
+          reg_S2 : in std_logic_vector(63 downto 0);    -- Register RS2
+          reg_S3 : in std_logic_vector(63 downto 0);    -- Register RS3     
+          --***** OUTPUT *****--
+          result : out std_logic_vector(63 downto 0)    -- Final Result to be written back to Register File
           );
 end multimedia_ALU_2;
 
@@ -35,7 +35,7 @@ constant SIMSHS_OP : STD_LOGIC_VECTOR(1 downto 0) := "11"; -- Signed integer mul
 begin
     --********************************** ALU_PROCESS *********************************--
     ALU_proc: process(opcode) is
-        variable multiplicand : integer := 0;
+        variable multiplicand : integer := 0;  
         variable multiplier : integer := 0;
         variable product : integer := 0;
         variable final_result : integer := 0;

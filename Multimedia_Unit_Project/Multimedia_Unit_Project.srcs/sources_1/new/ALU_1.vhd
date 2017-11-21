@@ -5,10 +5,9 @@
 -- Design Name: Multimedia_ALU
 -- Module Name: multimedia_ALU - Behavioral
 -- Project Name: Multimedia_Processor
--- Target Devices: 
 -- Tool Versions: Vivado 2017.3
--- Description: 
 --
+-- Description: This Arithmetic Logic Unit executes R3 format instructions.
 ----------------------------------------------------------------------------------
 
 library IEEE;
@@ -17,10 +16,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity multimedia_ALU is    
     Port(
-        opcode : in std_logic_vector(3 downto 0);      
-        reg_S1 : in std_logic_vector(63 downto 0);
-        reg_S2 : in std_logic_vector(63 downto 0);
-        result : out std_logic_vector(63 downto 0)
+        --***** INPUTS *****--
+        opcode : in std_logic_vector(3 downto 0);   -- R3 instruction format Opcode
+        reg_S1 : in std_logic_vector(63 downto 0);  -- Register RS1
+        reg_S2 : in std_logic_vector(63 downto 0);  -- Register RS2
+        --***** OUTPUT *****--
+        result : out std_logic_vector(63 downto 0)  -- Final Result to be written back to Register File
     );
 end multimedia_ALU;
 
@@ -45,12 +46,12 @@ begin
     --********************************** ALU_PROCESS *********************************--
     ALU_proc: process(opcode) is
         variable count : integer := 0;  -- Count variable for POPCNTH_OP and CLZ_OP
-        variable minuend : integer := 0; -- Minuend variable for ADBSDB_OP and SFHS_OP
-        variable subtrahend : integer := 0; -- Subtrahend variable for ADBSDB_OP and SFHS_OP
-        variable augend : integer := 0;
-        variable addend : integer := 0;
-        variable multiplicand : integer := 0;
-        variable multiplier : integer := 0;
+        variable minuend : integer := 0; -- Minuend variable for ADBSDB_OP, SFHS_OP, and SFH_OP
+        variable subtrahend : integer := 0; -- Subtrahend variable for ADBSDB_OP, SFHS_OP, and SFH_OP
+        variable augend : integer := 0; -- Augend variable for AHS_OP
+        variable addend : integer := 0; -- Addend variable for AHS_OP
+        variable multiplicand : integer := 0;   -- Multiplicand variable for MPYU_OP
+        variable multiplier : integer := 0; -- Multiplier variable for MPYU_OP
 
     begin
         case opcode is
