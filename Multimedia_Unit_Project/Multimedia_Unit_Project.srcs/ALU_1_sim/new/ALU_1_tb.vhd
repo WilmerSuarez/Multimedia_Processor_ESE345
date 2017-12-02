@@ -41,21 +41,21 @@ architecture Behavioral of ALU_1_tb is
     --OUTPUTS
     signal result : std_logic_vector(63 downto 0);
     --OPCODE_CONSTANTS
-    constant BCW_OP : STD_LOGIC_VECTOR(3 downto 0) := "0000";
-    constant AND_OP : STD_LOGIC_VECTOR(3 downto 0) := "0001";
-    constant OR_OP : STD_LOGIC_VECTOR(3 downto 0) := "0010";
-    constant POPCNTH_OP : STD_LOGIC_VECTOR(3 downto 0) := "0011";
-    constant CLZ_OP : STD_LOGIC_VECTOR(3 downto 0) := "0100";
-    constant ROT_OP : STD_LOGIC_VECTOR(3 downto 0) := "0101";
-    constant SHLHI_OP : STD_LOGIC_VECTOR(3 downto 0) := "0110";
-    constant A_OP : STD_LOGIC_VECTOR(3 downto 0) := "0111";
-    constant SFW_OP : STD_LOGIC_VECTOR(3 downto 0) := "1000";
-    constant AH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1001";
-    constant SFH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1010";
-    constant AHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1011";
-    constant SFHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1100";
-    constant MPYU_OP : STD_LOGIC_VECTOR(3 downto 0) := "1101";
-    constant ADBSDB_OP : STD_LOGIC_VECTOR(3 downto 0) := "1110";
+    constant BCW_OP : STD_LOGIC_VECTOR(3 downto 0) := "0001";
+    constant AND_OP : STD_LOGIC_VECTOR(3 downto 0) := "0010";
+    constant OR_OP : STD_LOGIC_VECTOR(3 downto 0) := "0011";
+    constant POPCNTH_OP : STD_LOGIC_VECTOR(3 downto 0) := "0100";
+    constant CLZ_OP : STD_LOGIC_VECTOR(3 downto 0) := "0101";
+    constant ROT_OP : STD_LOGIC_VECTOR(3 downto 0) := "0110";
+    constant SHLHI_OP : STD_LOGIC_VECTOR(3 downto 0) := "0111";
+    constant A_OP : STD_LOGIC_VECTOR(3 downto 0) := "1000";
+    constant SFW_OP : STD_LOGIC_VECTOR(3 downto 0) := "1001";
+    constant AH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1010";
+    constant SFH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1011";
+    constant AHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1100";
+    constant SFHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1101";
+    constant MPYU_OP : STD_LOGIC_VECTOR(3 downto 0) := "1110";
+    constant ADBSDB_OP : STD_LOGIC_VECTOR(3 downto 0) := "1111";
 begin
     UUT: multimedia_ALU 
         port map(opcode => opcode, reg_S1 => reg_S1, reg_S2 => reg_S2,
@@ -91,7 +91,7 @@ begin
            
            --******************* TEST_FOR_CLZ_OP ********************-- 
            --opcode <= CLZ_OP;
-           --reg_S1 <= X"0000000100010000";
+           --reg_S1 <= X"0000000000000100";
            --wait for 100 ns;
            
            --******************* TEST_FOR_ROT_OP ********************-- 
@@ -101,10 +101,10 @@ begin
            wait for 100 ns;
            
            --******************* TEST_FOR_SHLHI_OP ********************-- 
-          -- opcode <= SHLHI_OP;
-       --    reg_S1 <= X"0000000000000003";
-        --   reg_S2 <= X"0000000000000002";
-        --   wait for 100 ns;
+           opcode <= SHLHI_OP;
+           reg_S1 <= X"0000000000000003";
+           reg_S2_instr_field <= "0010";
+           wait for 100 ns;
         
            --******************* TEST_FOR_ROT_OP ********************-- 
            opcode <= A_OP;
@@ -131,16 +131,16 @@ begin
            wait for 100 ns;
            
            --******************* TEST_FOR_AHS_OP ********************-- 
-          -- opcode <= AHS_OP;
-          -- reg_S1 <= X"0009000400040003";
-         --  reg_S2 <= X"0001000300020002";
-          -- wait for 100 ns;
+           opcode <= AHS_OP;
+           reg_S1 <= X"800980048004FFFD";
+           reg_S2 <= X"800180038002FFFE";
+           wait for 100 ns;
            
            --******************* TEST_FOR_SFHS_OP ********************-- 
-          -- opcode <= SFHS_OP;
-          -- reg_S1 <= X"8009800480048003";
-         --  reg_S2 <= X"8001800380028002";
-         --  wait for 100 ns;
+           opcode <= SFHS_OP;
+           reg_S1 <= X"800980048004FFF7";
+           reg_S2 <= X"800180038002000A";
+           wait for 100 ns;
            
            --******************* TEST_FOR_MPYU_OP ********************-- 
            opcode <= MPYU_OP;
