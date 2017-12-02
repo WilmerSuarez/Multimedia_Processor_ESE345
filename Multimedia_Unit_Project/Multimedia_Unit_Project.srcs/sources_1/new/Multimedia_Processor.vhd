@@ -31,5 +31,9 @@ program_counter : entity work.program_counter_reg
              reset => RESET,
              PC_Out => PC_Out_sig 
              );
-    
+--*************** Instruction_Buffer ***************--
+insturction_buffer : entity work.instruction_buffer
+    port map(
+             
+             );
 end Behavioral;
