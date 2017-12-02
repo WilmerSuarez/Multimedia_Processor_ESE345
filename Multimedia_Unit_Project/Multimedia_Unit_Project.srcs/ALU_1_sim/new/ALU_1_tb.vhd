@@ -90,9 +90,9 @@ begin
            wait for 100 ns;
            
            --******************* TEST_FOR_CLZ_OP ********************-- 
-           --opcode <= CLZ_OP;
-           --reg_S1 <= X"0000000000000100";
-           --wait for 100 ns;
+           opcode <= CLZ_OP;
+           reg_S1 <= X"0000000000000100";
+           wait for 100 ns;
            
            --******************* TEST_FOR_ROT_OP ********************-- 
            opcode <= ROT_OP;
