@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/mux_3.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity mux_3
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/mux_sim/new/mux_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity mux_tb

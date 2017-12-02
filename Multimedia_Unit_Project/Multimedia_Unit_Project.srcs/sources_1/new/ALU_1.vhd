@@ -20,6 +20,7 @@ entity multimedia_ALU is
         opcode : in std_logic_vector(3 downto 0);   -- R3 instruction format Opcode
         reg_S1 : in std_logic_vector(63 downto 0);  -- Register RS1
         reg_S2 : in std_logic_vector(63 downto 0);  -- Register RS2
+        reg_S2_instr_field : in std_logic_vector(3 downto 0); -- 4 bit immediate for SHLHI instruction
         --***** OUTPUT *****--
         result : out std_logic_vector(63 downto 0)  -- Final Result to be written back to Register File
     );
@@ -66,7 +67,7 @@ begin
                     for i in 0 to 3 loop
                         count := 0;
                         for j in 0 to 15 loop
-                            if(reg_S1(16*i + j) = '1') then
+                            if  (reg_S1(16*i + j) = '1') then
                                 count := count + 1;
                             end if;
                         end loop;

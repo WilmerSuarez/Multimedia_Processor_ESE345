@@ -27,6 +27,7 @@ entity register_file is
           Read_Register_S1 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S1 to be read
           Read_Register_S2 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S2 to be read
           Read_Register_S3 : in STD_LOGIC_VECTOR(4 downto 0); -- Selects register S3 to be read
+          Write_enable : in std_logic; -- Enable bit to allow a write to occur
           --***** OUTPUTS *****--
           Data_S1 : out STD_LOGIC_VECTOR(63 downto 0); -- Ouput of read register S1
           Data_S2 : out STD_LOGIC_VECTOR(63 downto 0); -- Output of read register S2
@@ -42,7 +43,7 @@ begin
     Reg_File_Proc : process(CLK) is
     begin
     --********************************** WRITING_DATA *********************************-- 
-        if(rising_edge(clk)) then   -- When the clock is at a rising edge
+        if(rising_edge(clk) and (Write_enable = '1')) then   -- When the clock is at a rising edge
             reg_file_array(to_integer(unsigned(Write_Register))) <= Data_In;    -- Write data to selected register 
         end if;      
     --******************************* READING_REGISTERS *******************************--
