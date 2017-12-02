@@ -157,4 +157,27 @@ begin
            wait;
        end process stimulus;
          
+              --************************ OUTPUT_TO_FILE_PROCESS *************************-- 
+       output_to_file : process(result)
+          variable LINE_0 : line; -- Composing a Line to be written to later 
+          variable SPACE : character := ' '; -- Character vairiable used for a spce
+          variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
+          file RESULT_0 : text is out "results.csv"; -- Location of file being written
+       begin
+          if HEADER_DONE = '1' then
+            write(LINE_0, string'("S1,S2,S2Instr,OpCode,Result")); -- Display the input data
+            writeline(RESULT_0, LINE_0); -- Write to Line
+            HEADER_DONE := '0'; -- Header end
+          end if;
+          hwrite(LINE_0, reg_S1);
+          write(LINE_0, string'(","));
+          hwrite(LINE_0, reg_S2);
+          write(LINE_0, string'(","));
+          hwrite(LINE_0, reg_S2_instr_field);
+          write(LINE_0, string'(","));
+          hwrite(LINE_0, opcode);
+          write(LINE_0, string'(","));
+          hwrite(LINE_0, result);
+          writeline(RESULT_0, LINE_0); -- Write to the line
+          end process output_to_file;
 end Behavioral;
