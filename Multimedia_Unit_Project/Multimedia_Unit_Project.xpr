@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2017.3.1 (64-bit)              -->
+<!-- Product Version: Vivado v2017.3 (64-bit)              -->
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="32" Path="C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr">
+<Project Version="7" Minor="32" Path="C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="8962e72d61834c9f8d6bad901fd610db"/>
@@ -20,7 +20,7 @@
     <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val=""/>
     <Option Name="SourceMgmtMode" Val="DisplayOnly"/>
-    <Option Name="ActiveSimSet" Val="ALU_1_sim"/>
+    <Option Name="ActiveSimSet" Val="ALU_2_sim"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPCachePermission" Val="read"/>
@@ -32,7 +32,7 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="341"/>
+    <Option Name="WTXSimLaunchSim" Val="348"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -153,12 +153,6 @@
           <Attr Name="ImportTime" Val="1512186117"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/instruction_buffer_sim/imports/xsim/instruction_buffer_result.txt">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PSIMDIR/instruction_buffer_sim/behav/xsim/instruction_buffer_result.txt"/>
-          <Attr Name="ImportTime" Val="1512190493"/>
-        </FileInfo>
-      </File>
       <File Path="$PSIMDIR/instruction_buffer_sim/behav/xsim/instruction_buffer_result.txt">
         <FileInfo RelPath="instruction_buffer_result.txt"/>
       </File>
@@ -248,6 +242,12 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PSRCDIR/instruction_buffer_sim/new/instruction_buffer_data.txt"/>
           <Attr Name="ImportTime" Val="1512092326"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/ALU_2_sim/imports/new/instruction_buffer_result.txt">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PSRCDIR/instruction_buffer_sim/new/instruction_buffer_result.txt"/>
+          <Attr Name="ImportTime" Val="1512246241"/>
         </FileInfo>
       </File>
       <Config>

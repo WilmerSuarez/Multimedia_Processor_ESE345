@@ -33,95 +33,85 @@ constant SIMALS_OP : STD_LOGIC_VECTOR(1 downto 0) := "00"; -- Signed integer mul
 constant SIMAHS_OP : STD_LOGIC_VECTOR(1 downto 0) := "01"; -- Signed integer multiple-add high with saturation
 constant SIMSLS_OP : STD_LOGIC_VECTOR(1 downto 0) := "10"; -- Signed integer multiple-subtract low with saturation
 constant SIMSHS_OP : STD_LOGIC_VECTOR(1 downto 0) := "11"; -- Signed integer multiple-subtract high with saturation
+
+function FMADD (
+    a : std_logic_vector(15 downto 0);
+    b : std_logic_vector(15 downto 0);
+    c : std_logic_vector(31 downto 0))
+return std_logic_vector is
+            variable multiplicand : signed(15 downto 0) := (others => '0');  
+            variable multiplier : signed(15 downto 0) := (others => '0');
+            variable product : signed(31 downto 0) := (others => '0');
+            variable final_result : signed(31 downto 0) := (others => '0');
+            variable sign_test : std_logic_vector(2 downto 0) := (others => '0');
+ begin
+                 multiplicand := signed(a);
+                 multiplier := signed(b);
+                 product := multiplicand * multiplier;
+                 final_result := product + signed(c);
+                 
+                 sign_test := product(31) & c(31) & final_result(31); 
+                 
+                 if(sign_test = "001") then
+                     final_result := X"7FFFFFFF";
+                 elsif (sign_test = "110") then
+                     final_result := X"80000000";
+                 end if;
+ return std_logic_vector(final_result);
+ end FMADD;
+
+ function FMSUB (
+     a : std_logic_vector(15 downto 0);
+     b : std_logic_vector(15 downto 0);
+     c : std_logic_vector(31 downto 0))
+ return std_logic_vector is
+             variable multiplicand : signed(15 downto 0) := (others => '0');  
+             variable multiplier : signed(15 downto 0) := (others => '0');
+             variable product : signed(31 downto 0) := (others => '0');
+             variable final_result : signed(31 downto 0) := (others => '0');
+             variable sign_test : std_logic_vector(2 downto 0) := (others => '0');
+  begin
+                  multiplicand := signed(a);
+                  multiplier := signed(b);
+                  product := multiplicand * multiplier;
+                  final_result := product - signed(c);
+                  
+                  sign_test := product(31) & c(31) & final_result(31); 
+                  
+                  if(sign_test = "011") then
+                      final_result := X"7FFFFFFF";
+                  elsif (sign_test = "100") then
+                      final_result := X"80000000";
+                  end if;
+  return std_logic_vector(final_result);
+  end FMSUB;
+  
 begin
     --********************************** ALU_PROCESS *********************************--
     ALU_proc: process(opcode) is
-        variable multiplicand : integer := 0;  
-        variable multiplier : integer := 0;
-        variable product : integer := 0;
-        variable final_result : integer := 0;
+        variable multiplicand : signed(15 downto 0) := (others => '0');  
+        variable multiplier : signed(15 downto 0) := (others => '0');
+        variable product : signed(31 downto 0) := (others => '0');
+        variable final_result : signed(31 downto 0) := (others => '0');
+        variable sign_test : std_logic_vector(2 downto 0) := (others => '0');
     begin
         case(opcode) is 
             --********************************** SIMALS_OP *********************************--
             when SIMALS_OP =>
-                multiplicand := to_integer(signed(reg_S3(15 downto 0)));
-                multiplier := to_integer(signed(reg_S2(15 downto 0)));
-                product := multiplicand * multiplier;
-                final_result := product + (to_integer(signed(reg_S1(31 downto 0))));
-                if(final_result > (2**31-1)) then
-                    result(31 downto 0) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(31 downto 0) <= std_logic_vector(to_signed(final_result, 32));
-                end if; 
-                multiplicand := to_integer(signed(reg_S3(47 downto 32)));
-                multiplier := to_integer(signed(reg_S2(47 downto 32)));
-                product := multiplicand * multiplier;
-                final_result := product + (to_integer(signed(reg_S1(63 downto 32))));
-                if(final_result > (2**31-1)) then
-                    result(63 downto 32) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(63 downto 32) <= std_logic_vector(to_signed(final_result, 32));
-                end if;
+                result(31 downto 0) <= FMADD(reg_S3(15 downto 0), reg_S2(15 downto 0), reg_S1(31 downto 0));
+                result(63 downto 32) <= FMADD(reg_S3(47 downto 32), reg_S2(47 downto 32), reg_S1(63 downto 32));
             --********************************** SIMAHS_OP *********************************--
             when SIMAHS_OP =>
-                multiplicand := to_integer(signed(reg_S3(31 downto 16)));
-                multiplier := to_integer(signed(reg_S2(31 downto 16)));
-                product := multiplicand * multiplier;
-                final_result := product + (to_integer(signed(reg_S1(31 downto 0))));
-                if(final_result > (2**31-1)) then
-                    result(31 downto 0) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(31 downto 0) <= std_logic_vector(to_signed(final_result, 32));
-                end if; 
-                multiplicand := to_integer(signed(reg_S3(63 downto 48)));
-                multiplier := to_integer(signed(reg_S2(63 downto 48)));
-                product := multiplicand * multiplier;
-                final_result := product + (to_integer(signed(reg_S1(63 downto 32))));
-                if(final_result > (2**31-1)) then
-                    result(63 downto 32) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(63 downto 32) <= std_logic_vector(to_signed(final_result, 32));
-                end if;
+                result(31 downto 0) <= FMADD(reg_S3(31 downto 16), reg_S2(31 downto 16), reg_S1(31 downto 0));
+                result(63 downto 32) <= FMADD(reg_S3(63 downto 48), reg_S2(63 downto 48), reg_S1(63 downto 32));
             --********************************** SIMSLS_OP *********************************--
             when SIMSLS_OP =>
-                multiplicand := to_integer(signed(reg_S3(15 downto 0)));
-                multiplier := to_integer(signed(reg_S2(15 downto 0)));
-                product := multiplicand * multiplier;
-                final_result := (to_integer(signed(reg_S1(31 downto 0)))) - product;
-                if(final_result > (2**31-1)) then
-                    result(31 downto 0) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(31 downto 0) <= std_logic_vector(to_signed(final_result, 32));
-                end if; 
-                multiplicand := to_integer(signed(reg_S3(47 downto 32)));
-                multiplier := to_integer(signed(reg_S2(47 downto 32)));
-                product := multiplicand * multiplier;
-                final_result := (to_integer(signed(reg_S1(63 downto 32)))) - product;
-                if(final_result > (2**31-1)) then
-                    result(63 downto 32) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(63 downto 32) <= std_logic_vector(to_signed(final_result, 32));
-                end if;
+                result(31 downto 0) <= FMSUB(reg_S3(15 downto 0), reg_S2(15 downto 0), reg_S1(31 downto 0));
+                result(63 downto 32) <= FMSUB(reg_S3(47 downto 32), reg_S2(47 downto 32), reg_S1(63 downto 32));
             --********************************** SIMSHS_OP *********************************--
             when SIMSHS_OP =>
-                multiplicand := to_integer(signed(reg_S3(31 downto 16)));
-                multiplier := to_integer(signed(reg_S2(31 downto 16)));
-                product := multiplicand * multiplier;
-                final_result := (to_integer(signed(reg_S1(31 downto 0)))) - product;
-                if(final_result > (2**31-1)) then
-                    result(31 downto 0) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(31 downto 0) <= std_logic_vector(to_signed(final_result, 32));
-                end if; 
-                multiplicand := to_integer(signed(reg_S3(63 downto 48)));
-                multiplier := to_integer(signed(reg_S2(63 downto 48)));
-                product := multiplicand * multiplier;
-                final_result := (to_integer(signed(reg_S1(63 downto 32)))) - product;
-                if(final_result > (2**31-1)) then
-                    result(63 downto 32) <= std_logic_vector(to_signed(2**31-1, 32));
-                else 
-                    result(63 downto 32) <= std_logic_vector(to_signed(final_result, 32));
-                end if;
+                result(31 downto 0) <= FMSUB(reg_S3(31 downto 16), reg_S2(31 downto 16), reg_S1(31 downto 0));
+                result(63 downto 32) <= FMSUB(reg_S3(63 downto 48), reg_S2(63 downto 48), reg_S1(63 downto 32));
             when others => result <= (others => '0');
         end case;
     end process ALU_proc;
