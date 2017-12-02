@@ -40,6 +40,8 @@ begin
                 Result(47 downto 32) <= Immediate_16;
             when "11" =>    -- If offset is "11" 16 bit immediate goes in filed 63-48 of register RD
                 Result(63 downto 48) <= Immediate_16;
+            when others =>
+                Result <= (others => '0');
         end case; 
     end process li_shift_proc;
 end Behavioral;
