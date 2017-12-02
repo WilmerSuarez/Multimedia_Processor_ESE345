@@ -28,21 +28,21 @@ end multimedia_ALU;
 
 architecture Behavioral of multimedia_ALU is
 --******************** OP_CODE_VALUES ********************--
-constant BCW_OP : STD_LOGIC_VECTOR(3 downto 0) := "0000";
-constant AND_OP : STD_LOGIC_VECTOR(3 downto 0) := "0001";
-constant OR_OP : STD_LOGIC_VECTOR(3 downto 0) := "0010";
-constant POPCNTH_OP : STD_LOGIC_VECTOR(3 downto 0) := "0011";
-constant CLZ_OP : STD_LOGIC_VECTOR(3 downto 0) := "0100";
-constant ROT_OP : STD_LOGIC_VECTOR(3 downto 0) := "0101";
-constant SHLHI_OP : STD_LOGIC_VECTOR(3 downto 0) := "0110";
-constant A_OP : STD_LOGIC_VECTOR(3 downto 0) := "0111";
-constant SFW_OP : STD_LOGIC_VECTOR(3 downto 0) := "1000";
-constant AH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1001";
-constant SFH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1010";
-constant AHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1011";
-constant SFHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1100";
-constant MPYU_OP : STD_LOGIC_VECTOR(3 downto 0) := "1101";
-constant ADBSDB_OP : STD_LOGIC_VECTOR(3 downto 0) := "1110";
+constant BCW_OP : STD_LOGIC_VECTOR(3 downto 0) := "0001";
+constant AND_OP : STD_LOGIC_VECTOR(3 downto 0) := "0010";
+constant OR_OP : STD_LOGIC_VECTOR(3 downto 0) := "0011";
+constant POPCNTH_OP : STD_LOGIC_VECTOR(3 downto 0) := "0100";
+constant CLZ_OP : STD_LOGIC_VECTOR(3 downto 0) := "0101";
+constant ROT_OP : STD_LOGIC_VECTOR(3 downto 0) := "0110";
+constant SHLHI_OP : STD_LOGIC_VECTOR(3 downto 0) := "0111";
+constant A_OP : STD_LOGIC_VECTOR(3 downto 0) := "1000";
+constant SFW_OP : STD_LOGIC_VECTOR(3 downto 0) := "1001";
+constant AH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1010";
+constant SFH_OP : STD_LOGIC_VECTOR(3 downto 0) := "1011";
+constant AHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1100";
+constant SFHS_OP : STD_LOGIC_VECTOR(3 downto 0) := "1101";
+constant MPYU_OP : STD_LOGIC_VECTOR(3 downto 0) := "1110";
+constant ADBSDB_OP : STD_LOGIC_VECTOR(3 downto 0) := "1111";
 begin
     --********************************** ALU_PROCESS *********************************--
     ALU_proc: process(opcode) is
@@ -128,7 +128,9 @@ begin
                         addend := to_integer(signed(reg_S2((i+1)*16-1 downto i*16)));
                         if((minuend + subtrahend) > (2**15-1)) then
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(2**15-1, 16));
-                        else 
+                        elsif((minuend + subtrahend) < (-2**15)) then
+                            result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(-2**15, 16));
+                        else
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed((minuend + subtrahend), 16));
                         end if;
                     end loop;
@@ -139,6 +141,8 @@ begin
                         subtrahend := to_integer(signed(reg_S2((i+1)*16-1 downto i*16)));
                         if((minuend - subtrahend) < (-2**15)) then
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(-2**15, 16));
+                        elsif((minuend - subtrahend) > (2**15-1)) then
+                            result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(2**15-1, 16));
                         else 
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed((minuend - subtrahend), 16));
                         end if;
@@ -158,6 +162,7 @@ begin
                         subtrahend := to_integer(unsigned(reg_S2((i+1)*8-1 downto i*8))); 
                         result((i+1)*8-1 downto i*8) <= std_logic_vector(to_unsigned(abs(minuend - subtrahend), 8));
                     end loop;
+                when others => result <= (others => '0');
         end case;
     end process ALU_proc;
 end Behavioral;

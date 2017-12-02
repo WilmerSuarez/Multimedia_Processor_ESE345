@@ -72,20 +72,20 @@ begin
            variable LINE_O : line; -- Composing a Line to be written to later 
            variable SPACE : character := ' '; -- Character variable used for a space
            variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
-           file RESULT : text is out "C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/mux_sim/new/mux_result.txt"; -- Location of file being written
+           file RESULT : text is out "mux_result.txt"; -- Location of file being written
        begin
            if HEADER_DONE = '1' then
                write(LINE_O, string'("0: R3_Result:")); -- Display multiplexer input option 1
                write(LINE_O, SPACE); -- Write a Space
-               write(LINE_O, string'("000000000000BEEF"));
+               write(LINE_O, string'("0x000000000000BEEF"));
                writeline(RESULT, LINE_O); -- Write a Space
                write(LINE_O, string'("1: R4_Result:")); -- Display multiplexer input option 2
                write(LINE_O, SPACE); -- Write a Space
-               write(LINE_O, string'("000000000000FADE"));
+               write(LINE_O, string'("0x000000000000FADE"));
                writeline(RESULT, LINE_O); -- Write a Space
                write(LINE_O, string'("2: LI_Result:")); -- Display multiplexer input option 3
                write(LINE_O, SPACE); -- Write a Space
-               write(LINE_O, string'("0000BEEF00000000"));
+               write(LINE_O, string'("0x0000BEEF00000000"));
                writeline(RESULT, LINE_O); -- Write two lines
                writeline(RESULT, LINE_O); --
                write(LINE_O, string'("Result_Select")); -- Header for displaying the Selected Result of the Multiplexer

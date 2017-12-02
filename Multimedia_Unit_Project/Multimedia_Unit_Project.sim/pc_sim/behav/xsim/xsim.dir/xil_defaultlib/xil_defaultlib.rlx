@@ -2,15 +2,15 @@
 2017.3
 Oct 20 2017
 14:33:56
-C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/pc_sim/new/pc_tb.vhd,1512091127,vhdl,,,,pc_tb,,,,,,,,
+C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/pc_sim/new/pc_tb.vhd,1512191489,vhdl,,,,pc_tb,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/ALU_1.vhd,1511823333,vhdl,,,,multimedia_alu,,,,,,,,
-C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/ALU_2.vhd,1512170965,vhdl,,,,multimedia_alu_2,,,,,,,,
+C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/ALU_2.vhd,1512180902,vhdl,,,,multimedia_alu_2,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/ID_EX_WB_REG.vhd,1511823333,vhdl,,,,id_ex_wb_reg,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/IF_ID_REG.vhd,1511823333,vhdl,,,,if_id_reg,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/Multimedia_Processor.vhd,1511823333,vhdl,,,,multimedia_processor,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/control_unit.vhd,1511823333,vhdl,,,,control_unit,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/decoder.vhd,1511823333,vhdl,,,,decoder,,,,,,,,
-C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/instruction_buffer.vhd,1512169782,vhdl,,,,instruction_buffer,,,,,,,,
+C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/instruction_buffer.vhd,1512186805,vhdl,,,,instruction_buffer,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/li_shift.vhd,1511823333,vhdl,,,,li_shift,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/mux_3.vhd,1511823333,vhdl,,,,mux_3,,,,,,,,
 C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/program_counter_reg.vhd,1511823333,vhdl,C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/Multimedia_Processor.vhd,,,program_counter_reg,,,,,,,,

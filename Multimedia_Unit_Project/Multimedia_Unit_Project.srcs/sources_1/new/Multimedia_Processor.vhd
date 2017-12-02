@@ -24,7 +24,7 @@ architecture Behavioral of Multimedia_Processor is
 --************* Connection Signals *************--
 signal PC_Out_sig : std_logic_vector(4 downto 0);
 begin
---********** Program_Counter **********--
+--*************** Program_Counter ***************--
 program_counter : entity work.program_counter_reg
     port map(
              CLK => CLK, 

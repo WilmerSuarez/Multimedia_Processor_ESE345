@@ -13,14 +13,15 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity multimedia_ALU_2 is
     Port (
           --***** INPUTS *****--
           opcode : in std_logic_vector(1 downto 0); -- Opcode for R4 instruction format
-          reg_S1 : in std_logic_vector(63 downto 0);    -- Register RS1
-          reg_S2 : in std_logic_vector(63 downto 0);    -- Register RS2
-          reg_S3 : in std_logic_vector(63 downto 0);    -- Register RS3     
+          reg_S1 : in std_logic_vector(63 downto 0);  -- Register RS1
+          reg_S2 : in std_logic_vector(63 downto 0);  -- Register RS2
+          reg_S3 : in std_logic_vector(63 downto 0);  -- Register RS3     
           --***** OUTPUT *****--
           result : out std_logic_vector(63 downto 0)    -- Final Result to be written back to Register File
           );
@@ -121,6 +122,7 @@ begin
                 else 
                     result(63 downto 32) <= std_logic_vector(to_signed(final_result, 32));
                 end if;
+            when others => result <= (others => '0');
         end case;
     end process ALU_proc;
 end Behavioral;

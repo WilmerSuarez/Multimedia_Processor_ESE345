@@ -30,16 +30,16 @@ architecture Behavioral of instruction_buffer is
 type inst_buf_type is array(0 to 31) of std_logic_vector(23 downto 0);  -- Array of 32 instructions 
 signal inst_buf : inst_buf_type;
 begin
-    fill_buffer_proc : process(Write_Enable) is 
+    fill_buffer_proc : process(Write_Enable, CLK) is 
     begin                                       
-        if(Write_Enable = '1') then -- When Write Enable is set
+        if(Write_Enable = '1' and rising_edge(CLK)) then -- When Write Enable is set and at the rising edge of clock
             inst_buf(to_integer(unsigned(PC_In))) <= Instruction_In; -- Write Instruction_In into selected register
         end if;
     end process fill_buffer_proc;
     
     inst_buf_proc : process(CLK) is
     begin
-        if (rising_edge(CLK)) then  -- At rising edge of clock output instruction 
+        if (rising_edge(CLK) and Write_Enable = '0') then  -- At rising edge of clock output instruction 
             Instruction_Out <= inst_buf(to_integer(unsigned(PC_In)));
         end if;
     end process inst_buf_proc;

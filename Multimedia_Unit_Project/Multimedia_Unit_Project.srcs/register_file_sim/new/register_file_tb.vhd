@@ -100,7 +100,7 @@ begin
                variable LINE_O : line; -- Composing a Line to be written to later 
                variable SPACE : character := ' '; -- Character vairiable used for a spce
                variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
-               file RESULT : text is out "C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/register_file_sim/new/register_file_result.txt"; -- Location of file being written
+               file RESULT : text is out "register_file_result.txt"; -- Location of file being written
            begin
                if HEADER_DONE = '1' then
                    write(LINE_O, string'("TEST1 - Data_In: ")); -- Display the input data 

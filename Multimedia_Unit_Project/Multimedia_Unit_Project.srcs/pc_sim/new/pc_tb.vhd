@@ -65,7 +65,7 @@ begin
            variable LINE_O : line; -- Composing a Line to be written to later 
            variable SPACE : character := ' '; -- Character vairiable used for a spce
            variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
-           file RESULT : text is out "C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/pc_sim/new/pc_result.txt"; -- Location of file being written
+           file RESULT : text is out "pc_result.txt"; -- Location of file being written
        begin
            if HEADER_DONE = '1' then
                write(LINE_O, string'("PC_out")); -- Header to display the output of the PC

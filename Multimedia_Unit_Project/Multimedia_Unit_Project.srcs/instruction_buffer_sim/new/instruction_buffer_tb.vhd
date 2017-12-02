@@ -44,6 +44,8 @@ architecture Behavioral of instruction_buffer_tb is
     -- CLOCK_PERIOD 
     constant clk_period : time := 10 ns;
     
+    signal i : integer := 0;
+    
 begin
     UUT: instruction_buffer 
         port map(CLK => CLK, Write_Enable => Write_Enable, PC_In => PC_In, 
@@ -62,51 +64,43 @@ begin
        stimulus: process
            variable LINE_IN : line;
            variable INSTRUCTION : std_logic_vector(23 downto 0);
-           file INSTRUCTION_I : text is in "C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/instruction_buffer_sim/new/instruction_data.txt";
+           file INSTRUCTION_I : text is in "instruction_buffer_data.txt";
        begin
-           wait for 100 ns; -- Hold reset state for 100 ns
+           --wait for 100 ns; -- Hold reset state for 100 ns
            Write_Enable <= '1';
            while not endfile(INSTRUCTION_I) loop
                readline(INSTRUCTION_I, LINE_IN);
-               hread(LINE_IN, INSTRUCTION);
+               read(LINE_IN, INSTRUCTION);
                Instruction_In <= INSTRUCTION;
+               wait for 100 ns;
                PC_In <= PC_In + 1;
            end loop;
            
+           Write_Enable <= '0'; -- Clear Write_Enable
            wait for 100 ns; -- Wait for 100ns after populating buffer with isntructions
-           Write_Enable <= '0';
-           PC_In <= "01111";
-            
+
+           for i in 31 downto 0 loop
+               wait for 100 ns;
+               PC_In <= PC_In + 1;
+           end loop;
+           
            wait;
        end process stimulus;
         
        --************************ OUTPUT_TO_FILE_PROCESS *************************-- 
-       --output_to_file : process(Instruction_Out)
-         --  variable LINE_O : line; -- Composing a Line to be written to later 
-        --   variable SPACE : character := ' '; -- Character vairiable used for a spce
-        --   variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
-        --   file RESULT : text is out "C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/instruction_buffer_sim/new/instruction_buffer_result.txt"; -- Location of file being written
-      -- begin
-        --   if HEADER_DONE = '1' then
-          --     write(LINE_O, string'("TEST1 - Data_In: ")); -- Display the input data 
-            --   write(LINE_O, SPACE); -- Write a Space
-             --  write(LINE_O, string'("000000000000BEEF"));
-            --   writeline(RESULT, LINE_O); -- Write to Line
-            --   write(LINE_O, string'("TEST2 - Data_In: "));
-            --   write(LINE_O, SPACE); -- Write a Space
-            --   write(LINE_O, string'("0000BEEF00000000"));
-             --  writeline(RESULT, LINE_O); -- Write two lines
-            --   writeline(RESULT, LINE_O);
-          --     write(LINE_O, string'("Write_Register")); -- Header for displaying the register to be written
-          --     write(LINE_O, SPACE); -- Write a Space
-           --    write(LINE_O, string'("Data_S1")); -- Header to display the output register S1
-          --     writeline(RESULT, LINE_O); -- Write to line
-          --     HEADER_DONE := '0'; -- Header end
-         --  end if;
-         --  hwrite(LINE_O, Instruction_Out); -- Write the register to be written
-           --write(LINE_O, string'("             ")); -- Added space for formatting
-           --hwrite(LINE_O, ); -- Write the output data of register S1
-         --  writeline(RESULT, LINE_O); -- Write to the line
-       --e-nd process output_to_file;
+       output_to_file : process(Instruction_Out)
+           variable LINE_O : line; -- Composing a Line to be written to later 
+           variable SPACE : character := ' '; -- Character vairiable used for a spce
+           variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
+           file RESULT : text is out "instruction_buffer_result.txt"; -- Location of file being written
+       begin
+           if HEADER_DONE = '1' then
+               write(LINE_O, string'("Instruction_Out")); -- Header to display the output register S1
+               writeline(RESULT, LINE_O); -- Write to line
+               HEADER_DONE := '0'; -- Header end
+           end if;
+           hwrite(LINE_O, Instruction_Out); -- Write the register to be written
+           writeline(RESULT, LINE_O); -- Write to the line
+       end process output_to_file;
     
 end Behavioral;
