@@ -75,7 +75,7 @@ begin
            variable LINE_0 : line; -- Composing a Line to be written to later 
            variable SPACE : character := ' '; -- Character vairiable used for a spce
            variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
-           file RESULT_0 : text is out "instruction_buffer_result.csv"; -- Location of file being written
+           file RESULT_0 : text is out "results.csv"; -- Location of file being written
        begin
            if HEADER_DONE = '1' then
                write(LINE_0, string'("S1,S2,S3,OpCode,Result")); -- Display the input data
