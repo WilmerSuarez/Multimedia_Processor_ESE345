@@ -20,7 +20,7 @@ entity Multimedia_Processor is
           RESET : in std_logic;
           Write_Enable : in std_logic;
           Instruction_In : in std_logic_vector(23 downto 0)
-          --***** OUTPUTS *****--
+          --***** OUTPUTS *****-- 
           --PC_Out_IF : out std_logic_vector(4 downto 0);
           --Instruction_Out_IF : out std_logic_vector(23 downto 0);
           --Instruction_Out_ID : out std_logic_vector(23 downto 0)
@@ -54,6 +54,7 @@ signal reg_S2_instr_field_EX : std_logic_vector(3 downto 0);
 signal Reg_write_enable_EX : std_logic;
 signal result_ALU_1, result_ALU_2, Result_LI, Final_Result : std_logic_vector(63 downto 0);
 begin
+
 --***************** Program_Counter *****************--
 program_counter : entity work.program_counter_reg
     port map(
@@ -75,6 +76,7 @@ IF_ID_REG : entity work.IF_ID_REG
     port map(
              CLK => CLK,
              Instruction_In => Instruction_wire_IF,
+             disable => Write_Enable,
              Instruction_Out => Instruction_wire_ID
              );
 --******************** Decoder ********************--
