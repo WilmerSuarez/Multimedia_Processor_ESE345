@@ -40,7 +40,7 @@ type reg_file_type is array(0 to 31) of std_logic_vector(63 downto 0);  -- Array
 signal reg_file_array: reg_file_type;
 begin
     --******************************** REG_FILE_PROCESS *******************************-- 
-    Reg_File_Proc : process(CLK) is
+    Reg_File_Proc : process(CLK, Write_enable) is
     begin
     --********************************** WRITING_DATA *********************************-- 
         if(rising_edge(clk) and (Write_enable = '1')) then   -- When the clock is at a rising edge

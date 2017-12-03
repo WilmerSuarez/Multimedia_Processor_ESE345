@@ -20,6 +20,7 @@ entity li_shift is
           --***** INPUTS *****--
           Immediate_16 : in std_logic_vector(15 downto 0);  -- 16 bit immediate 
           LI_Offset : in std_logic_vector(1 downto 0);  -- Offset for 16 bit immediate
+          RD_Data : in std_logic_vector(63 downto 0);
           --***** OUTPUT *****-
           Result : out std_logic_vector(63 downto 0)    -- Final result with 16 bit immediate in appropriate 16 bit field
           );
@@ -30,7 +31,7 @@ begin
     --******************************** LI_SHIFT_PROCESS *******************************--
     li_shift_proc : process(Immediate_16, LI_Offset) is
     begin
-        Result <= (others => '0');
+        Result <= RD_Data;
         case LI_Offset is
             when "00" =>    -- If offset is "00" 16 bit immediate goes in filed 15-0 of register RD
                 Result(15 downto 0) <= Immediate_16;

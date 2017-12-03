@@ -64,7 +64,6 @@ begin
            variable INSTRUCTION : std_logic_vector(23 downto 0);
            file INSTRUCTION_I : text is in "instruction_buffer_data.txt";
        begin
-           --wait for 100 ns; -- Hold reset state for 100 ns
            Write_Enable <= '1';
            while not endfile(INSTRUCTION_I) loop
                readline(INSTRUCTION_I, LINE_IN);

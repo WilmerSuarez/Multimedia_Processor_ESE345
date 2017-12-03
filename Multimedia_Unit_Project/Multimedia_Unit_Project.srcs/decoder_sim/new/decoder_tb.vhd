@@ -30,7 +30,7 @@ architecture Behavioral of decoder_tb is
           Immediate_16_o : out std_logic_vector(15 downto 0);   -- 16 bit Immediate for Load Immediate Instruction
           LI_Offset_o : out std_logic_vector(1 downto 0);   -- Load Immediate Instruction offset for 16 bit Immediate
           Opcode_R4_o : out std_logic_vector(1 downto 0);   -- Opcode for R4 instruction format
-          Opcode_R3_o : out std_logic_vector(6 downto 0);   -- Opcode for R3 instruction format
+          Opcode_R3_o : out std_logic_vector(3 downto 0);   -- Opcode for R3 instruction format
           Reg_RS1_o : out std_logic_vector(4 downto 0); -- Address for register RS1
           Reg_RS2_o : out std_logic_vector(4 downto 0); -- Address for register RS2
           Reg_RS3_o : out std_logic_vector(4 downto 0)  -- Address for register RS3
@@ -45,7 +45,7 @@ architecture Behavioral of decoder_tb is
               signal Immediate_16_o : std_logic_vector(15 downto 0);   -- 16 bit Immediate for Load Immediate Instruction
               signal LI_Offset_o : std_logic_vector(1 downto 0);   -- Load Immediate Instruction offset for 16 bit Immediate
               signal Opcode_R4_o : std_logic_vector(1 downto 0);   -- Opcode for R4 instruction format
-              signal Opcode_R3_o : std_logic_vector(6 downto 0);   -- Opcode for R3 instruction format
+              signal Opcode_R3_o : std_logic_vector(3 downto 0);   -- Opcode for R3 instruction format
               signal Reg_RS1_o : std_logic_vector(4 downto 0); -- Address for register RS1
               signal Reg_RS2_o : std_logic_vector(4 downto 0); -- Address for register RS2
               signal Reg_RS3_o : std_logic_vector(4 downto 0);  -- Address for register RS3

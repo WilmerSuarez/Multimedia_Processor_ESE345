@@ -21,6 +21,7 @@ entity control_unit is
           Instruction : in std_logic_vector(23 downto 0);   -- Instruction
           --***** OUTPUT *****--
           Result_Select : out std_logic_vector(1 downto 0);  -- Final Result selection signal
+          S3_Select : out std_logic;    -- Register file S3 input Adress Select
           Reg_write_enable : out std_logic  -- Enable bit for write enable
           );
 end control_unit;
@@ -31,8 +32,10 @@ begin
     Control_Unit_Proc : process(Instruction) is
     begin
         Reg_write_enable <= '1';    -- Initialize write enable signal to 1
+        S3_Select <= '0';
         if(Instruction(23) = '1') then  -- If MSB of instruction is set, Final Result is of instruction format R-1 (Load Immediate)
             Result_Select <= "10";
+            S3_Select <= '1';
         else
            case Instruction(23 downto 22) is
                when "00" => -- If two MSBs are "00" then Final Result is of instruction format R3 
@@ -42,6 +45,8 @@ begin
                    end if;
                when "01" => -- If two MSBs are "01" then Final Result is of instruction format R4
                    Result_Select <= "01";
+               when others =>
+                   Result_Select <= "XX";
            end case;
         end if;
     end process Control_Unit_Proc;

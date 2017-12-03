@@ -30,7 +30,7 @@ entity ID_EX_WB_REG is
           Data_S1 : in std_logic_vector(63 downto 0);   -- RS1 data
           Data_S2 : in std_logic_vector(63 downto 0);   -- RS2 data
           Data_S3 : in std_logic_vector(63 downto 0);   -- R3 data
-          reg_S2_instr_field : in std_logic_vector(4 downto 0); -- immediate for SHLHI instruction (R3 instruction format
+          reg_S2_instr_field : in std_logic_vector(3 downto 0); -- immediate for SHLHI instruction (R3 instruction format
           Reg_write_enable : in std_logic;  -- Enable signal write register, to allow data to be written to Register File
           --***** OUTPUTS *****--
           Result_Select_o : out std_logic_vector(1 downto 0);   
@@ -56,7 +56,7 @@ begin
             Data_S1_o <= Data_S1;   
             Data_S2_o <= Data_S2;    
             Data_S3_o <= Data_S3;
-            reg_S2_instr_field_o <= reg_S2_instr_field(3 downto 0);
+            reg_S2_instr_field_o <= reg_S2_instr_field;
             Opcode_R3_o <= Opcode_R3;   
             Opcode_R4_o <= Opcode_R4;   
             Register_RD_o <= Register_RD;   
