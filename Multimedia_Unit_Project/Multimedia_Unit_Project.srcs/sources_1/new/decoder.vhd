@@ -25,7 +25,8 @@ entity decoder is
           Opcode_R3_o : out std_logic_vector(6 downto 0);   -- Opcode for R3 instruction format
           Reg_RS1_o : out std_logic_vector(4 downto 0); -- Address for register RS1
           Reg_RS2_o : out std_logic_vector(4 downto 0); -- Address for register RS2
-          Reg_RS3_o : out std_logic_vector(4 downto 0)  -- Address for register RS3
+          Reg_RS3_o : out std_logic_vector(4 downto 0);  -- Address for register RS3
+          Instruction_o : out std_logic_vector(23 downto 0) -- Instruction propagate for control unit
           );
 end decoder;
 
@@ -38,5 +39,6 @@ begin
     Opcode_R3_o <= instruction(21 downto 15);
     Reg_RS1_o <= instruction(9 downto 5);
     Reg_RS2_o <= instruction(14 downto 10);
-    Reg_RS3_o <= instruction(19 downto 15);    
+    Reg_RS3_o <= instruction(19 downto 15); 
+    instruction_o <= instruction;   
 end Behavioral;
