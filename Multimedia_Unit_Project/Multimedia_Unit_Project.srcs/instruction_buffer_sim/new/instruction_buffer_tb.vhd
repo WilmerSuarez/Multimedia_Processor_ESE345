@@ -44,8 +44,6 @@ architecture Behavioral of instruction_buffer_tb is
     -- CLOCK_PERIOD 
     constant clk_period : time := 10 ns;
     
-    signal i : integer := 0;
-    
 begin
     UUT: instruction_buffer 
         port map(CLK => CLK, Write_Enable => Write_Enable, PC_In => PC_In, 
