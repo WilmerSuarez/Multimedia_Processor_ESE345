@@ -22,7 +22,7 @@ entity decoder is
           Immediate_16_o : out std_logic_vector(15 downto 0);   -- 16 bit Immediate for Load Immediate Instruction
           LI_Offset_o : out std_logic_vector(1 downto 0);   -- Load Immediate Instruction offset for 16 bit Immediate
           Opcode_R4_o : out std_logic_vector(1 downto 0);   -- Opcode for R4 instruction format
-          Opcode_R3_o : out std_logic_vector(6 downto 0);   -- Opcode for R3 instruction format
+          Opcode_R3_o : out std_logic_vector(3 downto 0);   -- Opcode for R3 instruction format
           Reg_RS1_o : out std_logic_vector(4 downto 0); -- Address for register RS1
           Reg_RS2_o : out std_logic_vector(4 downto 0); -- Address for register RS2
           Reg_RS3_o : out std_logic_vector(4 downto 0);  -- Address for register RS3
@@ -36,7 +36,7 @@ begin
     Immediate_16_o <= instruction(20 downto 5);
     LI_Offset_o <= instruction(22 downto 21);
     Opcode_R4_o <= instruction(21 downto 20);
-    Opcode_R3_o <= instruction(21 downto 15);
+    Opcode_R3_o <= instruction(18 downto 15);
     Reg_RS1_o <= instruction(9 downto 5);
     Reg_RS2_o <= instruction(14 downto 10);
     Reg_RS3_o <= instruction(19 downto 15); 

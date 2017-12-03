@@ -37,7 +37,7 @@ begin
         end if;
     end process fill_buffer_proc;
     
-    inst_buf_proc : process(CLK) is
+    inst_buf_proc : process(Write_Enable, CLK) is
     begin
         if (rising_edge(CLK) and Write_Enable = '0') then  -- At rising edge of clock output instruction 
             Instruction_Out <= inst_buf(to_integer(unsigned(PC_In)));

@@ -26,9 +26,10 @@ architecture Behavioral of Multimedia_Processor_tb is
           --***** INPUT *****--
           CLK : in std_logic;
           RESET : in std_logic;
-          Write_Enable : in std_logic;
+          Write_Enable_buff : in std_logic;
           Instruction_In : in std_logic_vector(23 downto 0)
           --***** OUTPUTS *****--
+          
           );
     end component;
     
@@ -36,7 +37,7 @@ architecture Behavioral of Multimedia_Processor_tb is
     -- INPUTS
     signal CLK : std_logic;
     signal RESET : std_logic := '1';
-    signal Write_Enable : std_logic;
+    signal Write_Enable_buff : std_logic;
     signal Instruction_In : std_logic_vector(23 downto 0);
  
     --OUTPUTS
@@ -46,7 +47,7 @@ architecture Behavioral of Multimedia_Processor_tb is
     constant clk_period : time := 10 ns;
 begin
     UUT: Multimedia_Processor
-        port map(CLK => CLK, RESET => RESET, Write_Enable => Write_Enable, Instruction_In => Instruction_In);
+        port map(CLK => CLK, RESET => RESET, Write_Enable_buff => Write_Enable_buff, Instruction_In => Instruction_In);
  
     --***************************** CLOCK_GENERATION_PROCESSS ******************************-- 
     clk_generation: process
@@ -62,23 +63,23 @@ begin
        variable LINE_IN : line;
        variable INSTRUCTION : std_logic_vector(23 downto 0);
        variable count : integer := 0;
-       file INSTRUCTION_I : text is in "instruction_buffer_data.txt";
+       file INSTRUCTION_I : text is in "instructions.txt";
     begin
-       Write_Enable <= '1';
+       Write_Enable_buff <= '1';
        RESET <= '0';
        while not endfile(INSTRUCTION_I) loop
            readline(INSTRUCTION_I, LINE_IN);
-           read(LINE_IN, INSTRUCTION);
+           hread(LINE_IN, INSTRUCTION);
            Instruction_In <= INSTRUCTION;
            wait for 100 ns;
        end loop;
        
-       Write_Enable <= '0'; -- Clear Write_Enable
+       Write_Enable_buff <= '0'; -- Clear Write_Enable for intruction buffer
        RESET <= '1';
        wait for clk_period;
        RESET <= '0';
        wait for 100 ns; -- Wait for 100ns after populating buffer with isntructions
-        
+       
        
        wait;
     end process stimulus;

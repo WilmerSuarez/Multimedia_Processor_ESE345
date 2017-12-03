@@ -18,12 +18,9 @@ entity Multimedia_Processor is
           --***** INPUTS *****--
           CLK : in std_logic;
           RESET : in std_logic;
-          Write_Enable : in std_logic;
+          Write_Enable_buff : in std_logic;
           Instruction_In : in std_logic_vector(23 downto 0)
           --***** OUTPUTS *****-- 
-          --PC_Out_IF : out std_logic_vector(4 downto 0);
-          --Instruction_Out_IF : out std_logic_vector(23 downto 0);
-          --Instruction_Out_ID : out std_logic_vector(23 downto 0)
           );
 end Multimedia_Processor;
 
@@ -37,10 +34,12 @@ signal Instruction_wire_ID : std_logic_vector(23 downto 0);
 signal Register_rd_o_wire : std_logic_vector(4 downto 0); 
 signal Immediate_16_o_wire : std_logic_vector(15 downto 0);   
 signal LI_Offset_o_wire, Opcode_R4_o_wire : std_logic_vector(1 downto 0);
-signal Opcode_R3_o_wire : std_logic_vector(6 downto 0);   
+signal Opcode_R3_o_wire : std_logic_vector(3 downto 0);   
 signal Reg_RS1_o_wire, Reg_RS2_o_wire, Reg_RS3_o_wire : std_logic_vector(4 downto 0);
 signal instruction_o_wire : std_logic_vector(23 downto 0);
 signal Result_Select_wire : std_logic_vector(1 downto 0);
+signal S3_Select_wire : std_logic;
+signal Address_wire : std_logic_vector(4 downto 0);
 signal Reg_write_enable_wire : std_logic;
 signal Data_S1_wire, Data_S2_wire, Data_S3_wire : std_logic_vector(63 downto 0);
 --********** EX&WB_STAGE SIGNALS **********--
@@ -48,7 +47,7 @@ signal Result_Select_EX : std_logic_vector(1 downto 0);
 signal Register_RD_EX : std_logic_vector(4 downto 0);
 signal Immediate_16_EX : std_logic_vector(15 downto 0);
 signal LI_Offset_EX, Opcode_R4_EX: std_logic_vector(1 downto 0);
-signal Opcode_R3_EX : std_logic_vector(1 downto 0);
+signal Opcode_R3_EX : std_logic_vector(3 downto 0);
 signal Data_S1_EX, Data_S2_EX, Data_S3_EX : std_logic_vector(63 downto 0);
 signal reg_S2_instr_field_EX : std_logic_vector(3 downto 0);
 signal Reg_write_enable_EX : std_logic;
@@ -66,7 +65,7 @@ program_counter : entity work.program_counter_reg
 insturction_buffer : entity work.instruction_buffer
     port map(
              CLK => CLK,
-             Write_Enable => Write_Enable,
+             Write_Enable => Write_Enable_buff,
              PC_In => PC_Wire,
              Instruction_In => Instruction_In,
              Instruction_Out => Instruction_wire_IF
@@ -76,7 +75,7 @@ IF_ID_REG : entity work.IF_ID_REG
     port map(
              CLK => CLK,
              Instruction_In => Instruction_wire_IF,
-             disable => Write_Enable,
+             disable => Write_Enable_buff,
              Instruction_Out => Instruction_wire_ID
              );
 --******************** Decoder ********************--
@@ -96,9 +95,18 @@ decoder : entity work.decoder
 --******************** Control_Unit ********************--
 control_unit : entity work.control_unit
     port map(
-             Instruction => instruction_o_wire,
-             Result_Select => Result_Select_wire,
-             Reg_write_enable => Reg_write_enable_wire
+        Instruction => instruction_o_wire,
+        Result_Select => Result_Select_wire,
+        S3_Select => S3_Select_wire,
+        Reg_write_enable => Reg_write_enable_wire
+             ); 
+--******************** RS3_Select_Multiplexer ********************--
+mux_2 : entity work.mux_2
+    port map(
+             Adress_Select => S3_Select_wire,
+             RS3_Address => Reg_RS3_o_wire,
+             RD_Address => Register_rd_o_wire,
+             Address => Address_wire
              ); 
 --******************** Register_File ********************--
 register_file : entity work.register_file
@@ -108,7 +116,7 @@ register_file : entity work.register_file
              Data_In => Final_Result,
              Read_Register_S1 => Reg_RS1_o_wire,
              Read_Register_S2 => Reg_RS2_o_wire,
-             Read_Register_S3 => Reg_RS3_o_wire,
+             Read_Register_S3 => Address_wire,
              Write_enable => Reg_write_enable_wire,
              Data_S1 => Data_S1_wire,
              Data_S2 => Data_S2_wire,
@@ -127,7 +135,7 @@ ID_EX_WB_REG : entity work.ID_EX_WB_REG
              Data_S1 => Data_S1_wire,
              Data_S2 => Data_S2_wire,
              Data_S3 => Data_S3_wire,
-             reg_S2_instr_field => Reg_RS2_o_wire,
+             reg_S2_instr_field => Reg_RS2_o_wire(3 downto 0),
              Reg_write_enable => Reg_write_enable_wire, 
              Result_Select_o => Result_Select_EX,
              Register_RD_o => Register_RD_EX,
@@ -164,6 +172,7 @@ li_shift : entity work.li_shift
     port map(
              Immediate_16 => Immediate_16_EX,
              LI_Offset => LI_Offset_EX,
+             RD_Data => Data_S3_EX,
              Result => Result_LI
              );
 --******************* Register_Select_Mux *******************--

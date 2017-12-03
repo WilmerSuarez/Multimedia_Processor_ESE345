@@ -1,0 +1,31 @@
+Vivado Simulator 2017.3
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.3/bin/unwrapped/win64.o/xelab.exe -wto 8962e72d61834c9f8d6bad901fd610db --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Multimedia_Processor_tb_behav xil_defaultlib.Multimedia_Processor_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.std_logic_textio
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.program_counter_reg [program_counter_reg_default]
+Compiling architecture behavioral of entity xil_defaultlib.instruction_buffer [instruction_buffer_default]
+Compiling architecture behavioral of entity xil_defaultlib.IF_ID_REG [if_id_reg_default]
+Compiling architecture behavioral of entity xil_defaultlib.decoder [decoder_default]
+Compiling architecture behavioral of entity xil_defaultlib.control_unit [control_unit_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux_2 [mux_2_default]
+Compiling architecture behavioral of entity xil_defaultlib.register_file [register_file_default]
+Compiling architecture behavioral of entity xil_defaultlib.ID_EX_WB_REG [id_ex_wb_reg_default]
+Compiling architecture behavioral of entity xil_defaultlib.multimedia_ALU [multimedia_alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.multimedia_ALU_2 [multimedia_alu_2_default]
+Compiling architecture behavioral of entity xil_defaultlib.li_shift [li_shift_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux_3 [mux_3_default]
+Compiling architecture behavioral of entity xil_defaultlib.Multimedia_Processor [multimedia_processor_default]
+Compiling architecture behavioral of entity xil_defaultlib.multimedia_processor_tb
+Built simulation snapshot Multimedia_Processor_tb_behav

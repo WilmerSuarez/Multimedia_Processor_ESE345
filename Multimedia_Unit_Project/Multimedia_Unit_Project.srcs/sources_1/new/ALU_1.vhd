@@ -45,7 +45,7 @@ constant MPYU_OP : STD_LOGIC_VECTOR(3 downto 0) := "1110";
 constant ADBSDB_OP : STD_LOGIC_VECTOR(3 downto 0) := "1111";
 begin
     --********************************** ALU_PROCESS *********************************--
-    ALU_proc: process(opcode) is
+    ALU_proc: process(opcode, reg_S1, reg_S2, reg_S2_instr_field) is
         variable count : integer := 0;  -- Count variable for POPCNTH_OP and CLZ_OP
         variable minuend : integer := 0; -- Minuend variable for ADBSDB_OP, SFHS_OP, and SFH_OP
         variable subtrahend : integer := 0; -- Subtrahend variable for ADBSDB_OP, SFHS_OP, and SFH_OP

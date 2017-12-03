@@ -1,7 +1,7 @@
-Running: xsim.dir/lishift_tb_behav/xsimk.exe -simmode gui -wdb lishift_tb_behav.wdb -simrunnum 0 -socket 65386
+Running: xsim.dir/lishift_tb_behav/xsimk.exe -simmode gui -wdb lishift_tb_behav.wdb -simrunnum 0 -socket 53334
 Design successfully loaded
-Design Loading Memory Usage: 6884 KB (Peak: 6884 KB)
-Design Loading CPU Usage: 46 ms
+Design Loading Memory Usage: 6616 KB (Peak: 6616 KB)
+Design Loading CPU Usage: 0 ms
 Simulation completed
-Simulation Memory Usage: 7524 KB (Peak: 7524 KB)
-Simulation CPU Usage: 61 ms
+Simulation Memory Usage: 7272 KB (Peak: 7272 KB)
+Simulation CPU Usage: 0 ms
