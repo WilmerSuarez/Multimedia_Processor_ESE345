@@ -68,8 +68,7 @@ begin
            
            --******************* TEST_FOR_BCW_OP ********************-- 
            opcode <= BCW_OP;
-           reg_S1 <= X"000000000000BEEF";
-           reg_S2 <= X"000000000000BEEF";
+           reg_S1 <= X"00000000DEADBEEF";
            wait for 100 ns;
            
            --******************* TEST_FOR_AND_OP ********************-- 

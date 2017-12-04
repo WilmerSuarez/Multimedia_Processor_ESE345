@@ -113,11 +113,11 @@ register_file : entity work.register_file
     port map(
              CLK => CLK,
              Write_Register => Register_RD_EX,
-             Data_In => Final_Result,
+             Data_In => Final_Result_wire,
              Read_Register_S1 => Reg_RS1_o_wire,
              Read_Register_S2 => Reg_RS2_o_wire,
              Read_Register_S3 => Address_wire,
-             Write_enable => Reg_write_enable_wire,
+             Write_enable => Reg_write_enable_EX,
              Data_S1 => Data_S1_wire,
              Data_S2 => Data_S2_wire,
              Data_S3 => Data_S3_wire
@@ -152,7 +152,7 @@ ID_EX_WB_REG : entity work.ID_EX_WB_REG
 --******************** Multimedia_ALU ********************--
 multimedia_ALU : entity work.multimedia_ALU
     port map(
-             opcode => Opcode_R3_o_wire,
+             opcode => Opcode_R3_EX,
              reg_S1 => Data_S1_EX,
              reg_S2 => Data_S2_EX,
              reg_S2_instr_field => reg_S2_instr_field_EX,
@@ -182,6 +182,6 @@ mux_3 : entity work.mux_3
              R3_Result => result_ALU_1,
              R4_Result => result_ALU_2,
              LI_Result => Result_LI,
-             Final_Result => Final_Result
+             Final_Result => Final_Result_wire
              );
 end Behavioral;
