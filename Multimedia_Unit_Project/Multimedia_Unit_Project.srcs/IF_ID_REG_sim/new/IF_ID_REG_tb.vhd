@@ -25,6 +25,7 @@ architecture Behavioral of IF_ID_REG_tb is
     Port (
           CLK : in std_logic;
           Instruction_In : in std_logic_vector(23 downto 0);
+          disable : in std_logic;
           Instruction_Out : out std_logic_vector(23 downto 0)
           );
     end component;
@@ -33,13 +34,14 @@ architecture Behavioral of IF_ID_REG_tb is
     -- INPUTS
     signal CLK : std_logic := '0';
     signal Instruction_In : std_logic_vector(23 downto 0) := (others => '0');
+    signal disable : std_logic := '0';
     
     --OUTPUTS
     signal Instruction_Out : std_logic_vector(23 downto 0);
     --OPCODE_CONSTANTS
 begin
     UUT: IF_ID_REG 
-        port map(CLK => CLK, Instruction_In => Instruction_In, Instruction_Out => Instruction_Out);
+        port map(CLK => CLK, Instruction_In => Instruction_In, disable => disable, Instruction_Out => Instruction_Out);
  
        --***************************** STIMULUS_PROCESS_(INPUT DATA FROM FILE) ******************************-- 
        stimulus: process  
@@ -48,14 +50,15 @@ begin
            
            Instruction_In <= X"EDBEEF";
            CLK <= '1';
-           wait for 100 ns;
+           wait for 10 ns;
            
            CLK <= '0';
            Instruction_In <= X"DEADBE";
-           wait for 100 ns;
+           wait for 10 ns;
            
+           disable <= '1';
            CLK <= '1';
-           wait for 100 ns;
+           wait for 10 ns;
            
            wait;
        end process stimulus;

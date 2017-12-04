@@ -49,10 +49,10 @@ begin
         variable count : integer := 0;  -- Count variable for POPCNTH_OP and CLZ_OP
         variable minuend : integer := 0; -- Minuend variable for ADBSDB_OP, SFHS_OP, and SFH_OP
         variable subtrahend : integer := 0; -- Subtrahend variable for ADBSDB_OP, SFHS_OP, and SFH_OP
-        variable minuend_s : signed(15 downto 0); -- Minuend Saturation variable for AHS_OP 
-        variable subtrahend_s : signed(15 downto 0); -- Subtrahend Saturation variable for AHS_OP 
-        variable augend : signed(15 downto 0); -- Augend variable for AHS_OP
-        variable addend : signed(15 downto 0); -- Addend variable for AHS_OP
+        variable minuend_s : integer := 0; -- Minuend Saturation variable for AHS_OP 
+        variable subtrahend_s : integer := 0; -- Subtrahend Saturation variable for AHS_OP 
+        variable augend : integer := 0; -- Augend variable for AHS_OP
+        variable addend : integer := 0; -- Addend variable for AHS_OP
         variable multiplicand : integer := 0;   -- Multiplicand variable for MPYU_OP
         variable multiplier : integer := 0; -- Multiplier variable for MPYU_OP
         variable shift_result : integer := 0; -- Shift Result variable for SHLHI_OP
@@ -130,27 +130,27 @@ begin
                 --********************************** AHS_OP *********************************--
                 when AHS_OP =>
                     for i in 0 to 3 loop
-                        augend := (signed(reg_S1((i+1)*16-1 downto i*16)));
-                        addend := (signed(reg_S2((i+1)*16-1 downto i*16)));
+                        augend := to_integer(signed(reg_S1((i+1)*16-1 downto i*16)));
+                        addend := to_integer(signed(reg_S2((i+1)*16-1 downto i*16)));
                         if((addend + augend) > (2**15-1)) then
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(2**15-1, 16));
-                        elsif((augend + augend) < (-2**15)) then
+                        elsif((addend + augend) < (-2**15)) then
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(-2**15, 16));
                         else
-                            result((i+1)*16-1 downto i*16) <= std_logic_vector((augend + addend));
+                            result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(augend + addend, 16));
                         end if;
                     end loop;
                 --********************************** SFHS_OP ********************************--
                 when SFHS_OP =>
                     for i in 0 to 3 loop
-                        minuend_s := (signed(reg_S1((i+1)*16-1 downto i*16)));
-                        subtrahend_s := (signed(reg_S2((i+1)*16-1 downto i*16)));
+                        minuend_s := to_integer(signed(reg_S1((i+1)*16-1 downto i*16)));
+                        subtrahend_s := to_integer(signed(reg_S2((i+1)*16-1 downto i*16)));
                         if((minuend_s - subtrahend_s) < (-2**15)) then
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(-2**15, 16));
                         elsif((minuend_s - subtrahend_s) > (2**15-1)) then
                             result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(2**15-1, 16));
                         else 
-                            result((i+1)*16-1 downto i*16) <= std_logic_vector((minuend_s - subtrahend_s));
+                            result((i+1)*16-1 downto i*16) <= std_logic_vector(to_signed(minuend_s - subtrahend_s, 16));
                         end if;
                     end loop;
                 --********************************* MPYU_OP *********************************--

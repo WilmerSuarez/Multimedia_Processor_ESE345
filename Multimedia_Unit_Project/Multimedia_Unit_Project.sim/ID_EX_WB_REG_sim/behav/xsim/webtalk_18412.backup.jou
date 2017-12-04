@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Mon Dec  4 03:40:01 2017
+# Process ID: 18412
+# Current directory: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/ID_EX_WB_REG_sim/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/ID_EX_WB_REG_sim/behav/xsim/xsim.dir/ID_EX_WB_REG_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/ID_EX_WB_REG_sim/behav/xsim/webtalk.log
+# Journal file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/ID_EX_WB_REG_sim/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/ID_EX_WB_REG_sim/behav/xsim/xsim.dir/ID_EX_WB_REG_tb_behav/webtalk/xsim_webtalk.tcl -notrace

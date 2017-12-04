@@ -34,7 +34,7 @@ architecture Behavioral of ID_EX_WB_REG_tb is
           Data_S1 : in std_logic_vector(63 downto 0);   -- RS1 data
           Data_S2 : in std_logic_vector(63 downto 0);   -- RS2 data
           Data_S3 : in std_logic_vector(63 downto 0);   -- R3 data
-          reg_S2_instr_field : in std_logic_vector(4 downto 0); -- immediate for SHLHI instruction (R3 instruction format
+          reg_S2_instr_field : in std_logic_vector(3 downto 0); -- immediate for SHLHI instruction (R3 instruction format
           Reg_write_enable : in std_logic;  -- Enable signal write register, to allow data to be written to Register File
           --***** OUTPUTS *****--
           Result_Select_o : out std_logic_vector(1 downto 0);   
@@ -64,7 +64,7 @@ architecture Behavioral of ID_EX_WB_REG_tb is
           signal Data_S1 : std_logic_vector(63 downto 0);   -- RS1 data
           signal Data_S2 : std_logic_vector(63 downto 0);   -- RS2 data
           signal Data_S3 : std_logic_vector(63 downto 0);   -- R3 data
-          signal reg_S2_instr_field : std_logic_vector(4 downto 0); -- immediate for SHLHI instruction (R3 instruction format
+          signal reg_S2_instr_field : std_logic_vector(3 downto 0); -- immediate for SHLHI instruction (R3 instruction format
           signal Reg_write_enable : std_logic;  -- Enable signal write register, to allow data to be written to Register File
           --***** OUTPUTS *****--
           signal Result_Select_o : std_logic_vector(1 downto 0);   
@@ -90,8 +90,21 @@ begin
        begin
            wait for 100 ns; -- Hold reset state for 100 ns
            
-           CLK <= '1';
+          Result_Select <= "11";
+          Register_RD <= "10000";
+          Immediate_16 <= X"BEEF";
+          LI_Offset <= "11";
+          Opcode_R4 <= "11";
+          Opcode_R3 <= "1010";
+          Data_S1 <= X"DEADBEEFDEADBEEF";
+          Data_S2 <= X"DEADBEEFDEADBEEF";
+          Data_S3 <= X"DEADBEEFDEADBEEF";
+          reg_S2_instr_field <= "0101";
+          Reg_write_enable <= '1';
+
+           CLK <= '0';
            wait for 100 ns;
+           CLK <= '1';
            
            wait;
        end process stimulus;

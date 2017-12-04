@@ -134,11 +134,31 @@ begin
            reg_S1 <= X"800980048004FFFD";
            reg_S2 <= X"800180038002FFFE";
            wait for 100 ns;
+                      
+           opcode <= AHS_OP;
+           reg_S1 <= X"7FFF7FFF7FFF7FFF";
+           reg_S2 <= X"7FFF7FFF7FFF7FFF";
+           wait for 100 ns;
+                                 
+           opcode <= AHS_OP;
+           reg_S1 <= X"8000800080008000";
+           reg_S2 <= X"FFFFFFFFFFFFFFFF";
+           wait for 100 ns;
            
            --******************* TEST_FOR_SFHS_OP ********************-- 
            opcode <= SFHS_OP;
            reg_S1 <= X"800980048004FFF7";
            reg_S2 <= X"800180038002000A";
+           wait for 100 ns;
+           
+           opcode <= SFHS_OP;
+           reg_S1 <= X"7FFF7FFF7FFF7FFF";
+           reg_S2 <= X"8001800180018001";
+           wait for 100 ns;
+           
+           opcode <= SFHS_OP;
+           reg_S1 <= X"8000800080008000";
+           reg_S2 <= X"0001000100010001";
            wait for 100 ns;
            
            --******************* TEST_FOR_MPYU_OP ********************-- 

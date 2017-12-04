@@ -1,4 +1,5 @@
 #-----------------------------------------------------------
+<<<<<<< HEAD
 # Webtalk v2017.3.1 (64-bit)
 # SW Build 2035080 on Fri Oct 20 14:20:01 MDT 2017
 # IP Build 2034413 on Fri Oct 20 15:56:25 MDT 2017
@@ -12,3 +13,18 @@
 source C:/Users/Wilmer -notrace
 couldn't read file "C:/Users/Wilmer": no such file or directory
 INFO: [Common 17-206] Exiting Webtalk at Mon Dec  4 02:28:39 2017...
+=======
+# Webtalk v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Mon Dec  4 04:55:29 2017
+# Process ID: 11928
+# Current directory: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/xsim.dir/Multimedia_Processor_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/webtalk.log
+# Journal file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/xsim.dir/Multimedia_Processor_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/xsim.dir/Multimedia_Processor_tb_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Mon Dec  4 04:55:31 2017. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2017.3/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Mon Dec  4 04:55:31 2017...
+>>>>>>> 30880b11b88e631477dbd5cdd3c2ce24c9637e85

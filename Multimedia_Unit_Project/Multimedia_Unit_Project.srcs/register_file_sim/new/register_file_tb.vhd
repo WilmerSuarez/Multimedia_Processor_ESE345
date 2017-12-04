@@ -72,7 +72,7 @@ begin
 --***************************** STIMULUS_PROCESS ******************************-- 
        stimulus: process
        begin
-           wait for 100 ns; -- Hold reset state for 100 ns
+           wait for clk_period; -- Hold reset state for 100 ns
              
            --****************************** TEST_1 ******************************--
            Write_Register <= "00100";   -- Select register 4 to write to
@@ -92,7 +92,18 @@ begin
            Write_Enable <= '0'; -- Disable the write enable
            wait for clk_period;
 
-               wait;
+           --****************************** TEST_3 ******************************--
+           Read_Register_S1 <= "00100";
+           Read_Register_S2 <= "00101";
+           Read_Register_S3 <= "00110";
+           Write_Register <= "00110";
+           Data_in <= X"DEADBEEFDEADBEEF";
+           Write_Enable <= '1';
+           wait for clk_period;
+           Write_Enable <= '0';
+           wait for clk_period; 
+
+           wait;
            end process stimulus;
            
            --************************ OUTPUT_TO_FILE_PROCESS *************************-- 
