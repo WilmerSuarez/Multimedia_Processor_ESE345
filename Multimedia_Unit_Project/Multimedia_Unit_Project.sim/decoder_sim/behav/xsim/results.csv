@@ -1,0 +1,5 @@
+Instruction,Register_rd_o,Immediate_16_o,LI_Offset_o,Opcode_R4_o,Opcode_R3_o,Reg_RS1_o,Reg_RS2_o,Reg_RS3_o
+XXXXXX,XX,XXXX,X,X,X,XX,XX,XX
+AFFFFF,1F,7FFF,1,2,F,1F,1F,1F
+0FFFFF,1F,7FFF,0,0,F,1F,1F,1F
+4FFFFF,1F,7FFF,2,0,F,1F,1F,1F

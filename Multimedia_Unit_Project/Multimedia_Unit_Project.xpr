@@ -19,7 +19,7 @@
     <Option Name="CompiledLibDirActivehdl" Val="$PCACHEDIR/compile_simlib/activehdl"/>
     <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val=""/>
-    <Option Name="ActiveSimSet" Val="Multimedia_Processor_tb"/>
+    <Option Name="ActiveSimSet" Val="ALU_2_sim"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPCachePermission" Val="read"/>
@@ -31,7 +31,7 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="377"/>
+    <Option Name="WTXSimLaunchSim" Val="481"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -225,7 +225,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/mux_sim/new/mux_result.txt"/>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="mux_tb"/>
@@ -241,18 +240,6 @@
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/ALU_2_sim/imports/new/instruction_buffer_data.txt">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PSRCDIR/instruction_buffer_sim/new/instruction_buffer_data.txt"/>
-          <Attr Name="ImportTime" Val="1512092326"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/ALU_2_sim/imports/new/instruction_buffer_result.txt">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PSRCDIR/instruction_buffer_sim/new/instruction_buffer_result.txt"/>
-          <Attr Name="ImportTime" Val="1512246241"/>
         </FileInfo>
       </File>
       <Config>

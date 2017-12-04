@@ -15,11 +15,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity mux_3 is
      Port(
-          Result_Select : in std_logic_vector(1 downto 0);   -- Data selection
+          Result_Select : in std_logic_vector(1 downto 0); -- Data selection
           R3_Result : in std_logic_vector(63 downto 0);    -- Result from R3 instruction format ALU
           R4_Result : in std_logic_vector(63 downto 0);    -- Result from R4 instruction format ALU
           LI_Result : in std_logic_vector(63 downto 0);    -- Result from LI Shifter
-          Final_Result : out std_logic_vector(63 downto 0)    -- Final Result to be written back to Register File
+          Final_Result : out std_logic_vector(63 downto 0) -- Final Result to be written back to Register File
           );
 end mux_3;
 

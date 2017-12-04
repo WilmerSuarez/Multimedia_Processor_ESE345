@@ -33,7 +33,7 @@ architecture Behavioral of ALU_2_tb is
     
 --****************************** PORT_INITIALIZATION ******************************-- 
     -- INPUTS
-    signal opcode : std_logic_vector(1 downto 0) := (others => '0');
+    signal opcode : std_logic_vector(1 downto 0);
     signal reg_S1 : std_logic_vector(63 downto 0) := (others => '0');
     signal reg_S2 : std_logic_vector(63 downto 0) := (others => '0');
     signal reg_S3 : std_logic_vector(63 downto 0) := (others => '0');
@@ -49,22 +49,72 @@ begin
        --***************************** STIMULUS_PROCESS_(INPUT DATA FROM FILE) ******************************-- 
        stimulus: process  
        begin
-           wait for 100 ns; -- Hold reset state for 100 ns
-           reg_S1 <= X"DEADBEEFDEADBEEF";
-           reg_S2 <= X"DEADBEEFDEADBEEF";
-           reg_S3 <= X"71985CDF71985CDF";
+--           wait for 100 ns; -- Hold reset state for 100 ns
+--           -- Test for SIMALS Instruction
+--           opcode <= "00";
+--           reg_S1 <= X"DEADBEEFDEADBEEF";
+--           reg_S2 <= X"DEADBEEFDEADBEEF";
+--           reg_S3 <= X"71985CDF71985CDF";
+           
+--           wait for 100 ns;
+--           -- Test for SIMAHS Instruction
+--           opcode <= "01";
+           
+--           wait for 100 ns;
+--           -- Test for SIMSLS Instruction
+--           opcode <= "10";
+--           reg_S1 <= X"BEEFDEADBEEFDEAD";
+--           reg_S2 <= X"BEEFDEADBEEFDEAD";
+--           reg_S3 <= X"71985CDF71985CDF";
+           
+--           wait for 100 ns;
+--           -- Test for SIMSHS Instruction
+--           opcode <= "11";
+           
+           --*************** SATURATION_TEST_MAX (2^31-1) ***************--
+--           wait for 100 ns; 
+--           -- Test for SIMALS Instruction
+--           opcode <= "00";
+--           reg_S1 <= X"7FFFFFFF7FFFFFFF";
+--           reg_S2 <= X"0001000100010001";
+--           reg_S3 <= X"0001000100010001";
+          
+--           wait for 100 ns;
+--           -- Test for SIMAHS Instruction
+--           opcode <= "01";
+          
+--           wait for 100 ns;
+--           -- Test for SIMSLS Instruction
+--           opcode <= "10";
+--           reg_S1 <= X"7FFFFFFF7FFFFFFF";
+--           reg_S2 <= X"0001000100010001";
+--           reg_S3 <= X"FFFFFFFFFFFFFFFF";
+          
+--           wait for 100 ns;
+--           -- Test for SIMSHS Instruction
+--           opcode <= "11";
+           
+           --*************** SATURATION_TEST_MIN (-2^31) ***************--
+           wait for 100 ns; 
+           -- Test for SIMALS Instruction
            opcode <= "00";
-           
+           reg_S1 <= X"8000000080000000";
+           reg_S2 <= X"0001000100010001";
+           reg_S3 <= X"FFFFFFFFFFFFFFFF";
+         
            wait for 100 ns;
-           opcode <= "10";
-           
-           wait for 100 ns;
-           reg_S1 <= X"BEEFDEADBEEFDEAD";
-           reg_S2 <= X"BEEFDEADBEEFDEAD";
-           reg_S3 <= X"71985CDF71985CDF";
+           -- Test for SIMAHS Instruction
            opcode <= "01";
-           
+         
            wait for 100 ns;
+           -- Test for SIMSLS Instruction
+           opcode <= "10";
+           reg_S1 <= X"8000000080000000";
+           reg_S2 <= X"0001000100010001";
+           reg_S3 <= X"0001000100010001";
+         
+           wait for 100 ns;
+           -- Test for SIMSHS Instruction
            opcode <= "11";
            
            wait;

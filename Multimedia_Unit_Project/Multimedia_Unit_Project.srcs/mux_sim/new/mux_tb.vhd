@@ -50,8 +50,9 @@ begin
        begin
        wait for 100 ns; -- Hold reset state for 100 ns
        
-       R3_Result <= X"000000000000BEEF";    -- Multiplexer inputs 
-       R4_Result <= X"000000000000FADE";
+       -- Multiplexer inputs 
+       R3_Result <= X"000000000000BEEF";
+       R4_Result <= X"00000000BEEF0000";
        LI_Result <= X"0000BEEF00000000";
        
        Result_Select <= "10";   -- Select input 2 (LI_Result)
@@ -70,33 +71,24 @@ begin
        --************************ OUTPUT_TO_FILE_PROCESS *************************-- 
        output_to_file : process(Final_Result)
            variable LINE_O : line; -- Composing a Line to be written to later 
-           variable SPACE : character := ' '; -- Character variable used for a space
            variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written
-           file RESULT : text is out "mux_result.txt"; -- Location of file being written
+           file RESULT : text is out "mux_result.csv"; -- Location of file being written
        begin
            if HEADER_DONE = '1' then
-               write(LINE_O, string'("0: R3_Result:")); -- Display multiplexer input option 1
-               write(LINE_O, SPACE); -- Write a Space
-               write(LINE_O, string'("0x000000000000BEEF"));
-               writeline(RESULT, LINE_O); -- Write a Space
-               write(LINE_O, string'("1: R4_Result:")); -- Display multiplexer input option 2
-               write(LINE_O, SPACE); -- Write a Space
-               write(LINE_O, string'("0x000000000000FADE"));
-               writeline(RESULT, LINE_O); -- Write a Space
-               write(LINE_O, string'("2: LI_Result:")); -- Display multiplexer input option 3
-               write(LINE_O, SPACE); -- Write a Space
-               write(LINE_O, string'("0x0000BEEF00000000"));
-               writeline(RESULT, LINE_O); -- Write two lines
-               writeline(RESULT, LINE_O); --
-               write(LINE_O, string'("Result_Select")); -- Header for displaying the Selected Result of the Multiplexer
-               write(LINE_O, SPACE); -- Write a Space
-               write(LINE_O, string'("Final_Result")); -- Header for displaying the output of the Multiplexer
+               write(LINE_O, string'("R3_Result,R4_Result,LI_Result,Result_Select,Final_Result")); -- Display multiplexer input option 1
                writeline(RESULT, LINE_O); -- Write to the line
                HEADER_DONE := '0'; -- Header end
            end if;
-           hwrite(LINE_O, Result_Select); -- Write the selected input index
-           write(LINE_O, string'("             ")); -- Added space for formatting
-           hwrite(LINE_O, Final_Result); -- Write the Final Result selected by the Mux
+           hwrite(LINE_O, R3_Result); 
+           write(LINE_O, string'(","));
+           hwrite(LINE_O, R4_Result); 
+           write(LINE_O, string'(","));
+           hwrite(LINE_O, LI_Result); 
+           write(LINE_O, string'(","));
+           hwrite(LINE_O, Result_Select); 
+           write(LINE_O, string'(","));
+           hwrite(LINE_O, Final_Result); 
+           write(LINE_O, string'(","));
            writeline(RESULT, LINE_O); -- Write to the line
        end process output_to_file;
 end Behavioral;
