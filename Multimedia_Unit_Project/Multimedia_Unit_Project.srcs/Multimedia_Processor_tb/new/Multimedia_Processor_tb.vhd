@@ -13,6 +13,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.ALL;
 use IEEE.std_logic_textio.all; -- I/O Logic
 use STD.TEXTIO.ALL; -- I/O functions and procedures
 
@@ -56,6 +57,7 @@ architecture Behavioral of Multimedia_Processor_tb is
     signal Instruction_In : std_logic_vector(23 downto 0);
     
     -- OUTPUTS
+    
     --***** IF STAGE *****--
     signal Instruction_In_IF : std_logic_vector(23 downto 0);
     --***** ID STAGE *****--
@@ -94,9 +96,11 @@ begin
     --***************************** STIMULUS_PROCESS_(INPUT DATA FROM FILE) ******************************-- 
     stimulus: process
        variable LINE_IN : line;
+       variable LINE_OUT : line;
        variable INSTRUCTION : std_logic_vector(23 downto 0);
        variable count : integer := 0;
        file INSTRUCTION_I : text is in "Instructions_matrix.txt";
+       file REG_FILE_O : text is out "register_file.txt";
     begin
        Write_Enable_buff <= '1';
        RESET <= '0';
@@ -111,6 +115,29 @@ begin
        RESET <= '1';
        wait for clk_period;
        RESET <= '0';
+       wait for 33 * clk_period;
+       
+       -- Start reading the register file
+       RESET <= '1';
+       Write_Enable_buff <= '1';
+       wait for clk_period;
+       RESET <= '0';
+       for i in 0 to 31 loop
+            Instruction_In <= (others => '0');
+            Instruction_In(9 downto 5) <= std_logic_vector(to_unsigned(i, 5));
+            wait for clk_period;
+       end loop;
+       
+       Write_Enable_buff <= '0';
+       RESET <= '1';
+       wait for clk_period;
+       RESET <= '0';
+       wait for 3*clk_period;
+       for i in 31 downto 0 loop
+            hwrite(LINE_OUT, Data_S1_ID);
+            writeline(REG_FILE_O, LINE_OUT);
+            wait for clk_period; 
+       end loop;
        
        wait;
     end process stimulus;

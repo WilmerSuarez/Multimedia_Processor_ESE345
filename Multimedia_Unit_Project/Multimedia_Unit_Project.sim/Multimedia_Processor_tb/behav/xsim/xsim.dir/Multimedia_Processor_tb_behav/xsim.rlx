@@ -1,10 +1,6 @@
 
 { 
-<<<<<<< HEAD
-    crc :  5527718571107931876  , 
-=======
-    crc :  7501219283104270332  , 
->>>>>>> 30880b11b88e631477dbd5cdd3c2ce24c9637e85
+    crc :  7707014570999685520  , 
     ccp_crc :  0  , 
     cmdline : " -wto 8962e72d61834c9f8d6bad901fd610db --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Multimedia_Processor_tb_behav xil_defaultlib.Multimedia_Processor_tb" , 
     buildDate : "Oct  4 2017" , 

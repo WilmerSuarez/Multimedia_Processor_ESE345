@@ -1,12 +1,24 @@
 #-----------------------------------------------------------
+<<<<<<< HEAD
+# Webtalk v2017.3.1 (64-bit)
+# SW Build 2035080 on Fri Oct 20 14:20:01 MDT 2017
+# IP Build 2034413 on Fri Oct 20 15:56:25 MDT 2017
+# Start of session at: Mon Dec  4 02:28:39 2017
+# Process ID: 2872
+# Current directory: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/xsim.dir/Multimedia_Processor_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/webtalk.log
+# Journal file: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim\webtalk.jou
+=======
 # Webtalk v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Mon Dec  4 06:43:58 2017
-# Process ID: 10144
+# Start of session at: Mon Dec  4 04:55:29 2017
+# Process ID: 11928
 # Current directory: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/xsim.dir/Multimedia_Processor_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/webtalk.log
 # Journal file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim\webtalk.jou
+>>>>>>> 30880b11b88e631477dbd5cdd3c2ce24c9637e85
 #-----------------------------------------------------------
 source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/Multimedia_Processor_tb/behav/xsim/xsim.dir/Multimedia_Processor_tb_behav/webtalk/xsim_webtalk.tcl -notrace

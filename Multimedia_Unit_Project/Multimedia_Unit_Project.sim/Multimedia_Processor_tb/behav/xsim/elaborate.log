@@ -12,8 +12,8 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
-Compiling package ieee.std_logic_textio
 Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_textio
 Compiling architecture behavioral of entity xil_defaultlib.program_counter_reg [program_counter_reg_default]
 Compiling architecture behavioral of entity xil_defaultlib.instruction_buffer [instruction_buffer_default]
 Compiling architecture behavioral of entity xil_defaultlib.IF_ID_REG [if_id_reg_default]
