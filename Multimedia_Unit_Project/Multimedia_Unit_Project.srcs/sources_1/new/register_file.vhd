@@ -40,17 +40,30 @@ type reg_file_type is array(0 to 31) of std_logic_vector(63 downto 0);  -- Array
 signal reg_file_array: reg_file_type;
 begin
     --******************************** REG_FILE_PROCESS *******************************-- 
-    Reg_File_Proc : process(CLK, Write_enable) is
-    begin
-    --********************************** WRITING_DATA *********************************-- 
-        if(rising_edge(clk) and (Write_enable = '1')) then   -- When the clock is at a rising edge
-            reg_file_array(to_integer(unsigned(Write_Register))) <= Data_In;    -- Write data to selected register 
-        end if;      
+    Reg_File_Proc : process(CLK) is
+    begin      
     --******************************* READING_REGISTERS *******************************--
         if(falling_edge(clk)) then -- When the clock is at a falling edge
-            Data_S1 <= reg_file_array(to_integer(unsigned(Read_Register_S1)));  -- Read register S1
-            Data_S2 <= reg_file_array(to_integer(unsigned(Read_Register_S2)));  -- Read register S2
-            Data_S3 <= reg_file_array(to_integer(unsigned(Read_Register_S3)));  -- Read register S3
+            if(Write_enable = '1' and Read_Register_S1 = Write_Register) then
+                Data_S1 <= Data_In;
+            else
+                Data_S1 <= reg_file_array(to_integer(unsigned(Read_Register_S1)));  -- Read register S1
+            end if;
+            if(Write_enable = '1' and Read_Register_S2 = Write_Register) then
+                Data_S2 <= Data_In;
+            else
+                Data_S2 <= reg_file_array(to_integer(unsigned(Read_Register_S2)));  -- Read register S2
+            end if;
+            
+            if(Write_enable = '1' and Read_Register_S3 = Write_Register) then
+                Data_S3 <= Data_In;
+            else
+                Data_S3 <= reg_file_array(to_integer(unsigned(Read_Register_S3)));  -- Read register S3
+            end if;   
+        end if;
+    --********************************** WRITING_DATA *********************************-- 
+        if(rising_edge(clk) and (Write_enable = '1')) then   -- When the clock is at a rising edge
+            reg_file_array(to_integer(unsigned(Write_Register))) <= Data_In;    -- Write data to selected register;
         end if;
     end process Reg_File_Proc;
 end Behavioral;
