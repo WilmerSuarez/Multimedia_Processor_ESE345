@@ -44,10 +44,10 @@
 #endif
 typedef void (*funcp)(char *, char *);
 extern int main(int, char**);
-extern void execute_17(char*, char *);
-extern void execute_18(char*, char *);
 extern void execute_16(char*, char *);
-funcp funcTab[3] = {(funcp)execute_17, (funcp)execute_18, (funcp)execute_16};
+extern void execute_17(char*, char *);
+extern void execute_15(char*, char *);
+funcp funcTab[3] = {(funcp)execute_16, (funcp)execute_17, (funcp)execute_15};
 const int NumRelocateId= 3;
 
 void relocate(char *dp)

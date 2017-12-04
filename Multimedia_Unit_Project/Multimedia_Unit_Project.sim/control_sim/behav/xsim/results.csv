@@ -1,0 +1,7 @@
+Instruction,Result_Select,S3_Select,Reg_write_enable
+000000,X,U,U
+000000,0,0,0
+800000,2,1,1
+010000,0,0,1
+000000,0,0,0
+400000,1,0,1

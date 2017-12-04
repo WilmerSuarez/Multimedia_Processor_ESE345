@@ -2,7 +2,7 @@
 -- Engineer(s): Wilmer Suarez, Himanshu Goel 
 -- 
 -- Create Date: 11/13/2017 07:52:56 PM
--- Design Name: Control Unit
+-- Design Name: Instructions Decoder
 -- Module Name: decoder - Behavioral
 -- Project Name: Multimedia_Processor 
 -- Tool Versions: Vivado 2017.3
@@ -16,7 +16,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity decoder is
     Port (
           --***** INPUT *****--
-          instruction : in std_logic_vector(23 downto 0);   -- Instruction
+          Instruction : in std_logic_vector(23 downto 0);   -- Instruction
           --***** OUTPUTS *****--
           Register_rd_o : out std_logic_vector(4 downto 0); -- Write Back register address
           Immediate_16_o : out std_logic_vector(15 downto 0);   -- 16 bit Immediate for Load Immediate Instruction

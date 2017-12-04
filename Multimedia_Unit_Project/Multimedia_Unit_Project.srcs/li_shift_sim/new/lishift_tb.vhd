@@ -2,12 +2,12 @@
 -- Engineer (s): Wilmer Suarez, Himanshu 
 -- 
 -- Create Date: 12/02/2017 12:31:38 AM
--- Design Name: R3 Instruction Format ALU Testbench
--- Module Name: ALU_1_tb - Behavioral
+-- Design Name: Load Immediate Shifter Testbench
+-- Module Name: lishift_tb - Behavioral
 -- Project Name: Multimedia_Processor
 -- Tool Versions: Vivado 2017.3
 --
--- Description: Test Bench for the Multimedia_ALU
+-- Description: Test Bench for the Load Immediate Shifter
 ----------------------------------------------------------------------------------
 
 library IEEE;
@@ -49,19 +49,18 @@ begin
        begin
            wait for 100 ns; -- Hold reset state for 100 ns
            
-           --******************* TEST_FOR_BCW_OP ********************-- 
            RD_Data <= X"FFFFFFFFFFFFFFFF";
            imm16 <= X"AAAA";
-           li_offset <= "00";
+           li_offset <= "00";   -- Place imm16 into the 1st 16-bit field
            wait for 100 ns;
            
-           li_offset <= "01";
+           li_offset <= "01";   -- Place imm16 into the 2nd 16-bit field
            wait for 100 ns;
                       
-           li_offset <= "10";
+           li_offset <= "10";   -- Place imm16 into the 3rd 16-bit field
            wait for 100 ns;
                                  
-           li_offset <= "11";
+           li_offset <= "11";   -- Place imm16 into the 4th 16-bit field
            wait for 100 ns;
 
            wait;
@@ -74,15 +73,17 @@ begin
           file RESULT_0 : text is out "results.csv"; -- Location of file being written
        begin
           if HEADER_DONE = '1' then
-            write(LINE_0, string'("Imm16,LIOffset,Result")); -- Display the input data
+            write(LINE_0, string'("RD_Data,Imm16,LI_Offset,Result")); -- Display the input data
             writeline(RESULT_0, LINE_0); -- Write to Line
-            HEADER_DONE := '0'; -- Header end
+            HEADER_DONE := '0'; -- Header end 
           end if;
+          hwrite(LINE_0, RD_Data);
+          write(LINE_0, string'(","));
           hwrite(LINE_0, imm16);
           write(LINE_0, string'(","));
           hwrite(LINE_0, li_offset);
           write(LINE_0, string'(","));
           hwrite(LINE_0, result);
           writeline(RESULT_0, LINE_0); -- Write to the line
-          end process output_to_file;
+        end process output_to_file;
 end Behavioral;

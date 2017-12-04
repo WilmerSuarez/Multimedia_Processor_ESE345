@@ -74,9 +74,9 @@ return std_logic_vector is
                   multiplicand := signed(a);
                   multiplier := signed(b);
                   product := multiplicand * multiplier;
-                  final_result := product - signed(c);
+                  final_result := signed(c) - product;
                   
-                  sign_test := product(31) & c(31) & final_result(31); 
+                  sign_test := c(31) & product(31) & final_result(31); 
                   
                   if(sign_test = "011") then
                       final_result := X"7FFFFFFF";
@@ -88,12 +88,7 @@ return std_logic_vector is
   
 begin
     --********************************** ALU_PROCESS *********************************--
-    ALU_proc: process(opcode) is
-        variable multiplicand : signed(15 downto 0) := (others => '0');  
-        variable multiplier : signed(15 downto 0) := (others => '0');
-        variable product : signed(31 downto 0) := (others => '0');
-        variable final_result : signed(31 downto 0) := (others => '0');
-        variable sign_test : std_logic_vector(2 downto 0) := (others => '0');
+    ALU_proc: process(opcode, reg_S1, reg_S2, reg_S3) is
     begin
         case(opcode) is 
             --********************************** SIMALS_OP *********************************--

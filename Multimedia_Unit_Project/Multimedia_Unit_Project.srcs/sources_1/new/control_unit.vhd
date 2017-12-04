@@ -40,7 +40,7 @@ begin
            case Instruction(23 downto 22) is
                when "00" => -- If two MSBs are "00" then Final Result is of instruction format R3 
                    Result_Select <= "00";
-                   if Instruction(21 downto 15) = "0000000" then
+                   if Instruction(18 downto 15) = "0000" then
                        Reg_write_enable <= '0'; -- If NOP then write enable is disbled
                    end if;
                when "01" => -- If two MSBs are "01" then Final Result is of instruction format R4
