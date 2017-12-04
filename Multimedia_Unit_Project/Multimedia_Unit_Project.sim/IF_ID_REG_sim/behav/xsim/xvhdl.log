@@ -1,8 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/program_counter_reg.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity program_counter_reg
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/Multimedia_Processor.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity Multimedia_Processor
-ERROR: [VRFC 10-1412] syntax error near ) [C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/Multimedia_Processor.vhd:38]
-ERROR: [VRFC 10-149] 'instruction_buffer' is not compiled in library xil_defaultlib [C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/Multimedia_Processor.vhd:35]
-ERROR: [VRFC 10-1504] unit behavioral ignored due to previous errors [C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/Multimedia_Processor.vhd:23]
-INFO: [VRFC 10-240] VHDL file C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/sources_1/new/Multimedia_Processor.vhd ignored due to errors
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.srcs/IF_ID_REG_sim/new/IF_ID_REG_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity IF_ID_REG_tb

@@ -56,7 +56,10 @@ begin
        stimulus: process
        begin
            wait for clk_period;
+           wait for clk_period;
            reset <= '0';    -- Clear reset signal
+           wait for 30 * clk_period;
+           reset <= '1';
            wait;
        end process stimulus;
        

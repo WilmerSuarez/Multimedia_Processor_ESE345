@@ -69,23 +69,24 @@ begin
                readline(INSTRUCTION_I, LINE_IN);
                read(LINE_IN, INSTRUCTION);
                Instruction_In <= INSTRUCTION;
-               wait for 100 ns;
+               wait for clk_period;
                PC_In <= PC_In + 1;
            end loop;
            
            Write_Enable <= '0'; -- Clear Write_Enable
-           wait for 100 ns; -- Wait for 100ns after populating buffer with isntructions
+           wait for clk_period; -- Wait for 100ns after populating buffer with isntructions
 
            for i in 31 downto 0 loop
-               wait for 100 ns;
+               wait for clk_period;
                PC_In <= PC_In + 1;
            end loop;
+           wait for clk_period;
            
            wait;
        end process stimulus;
         
        --************************ OUTPUT_TO_FILE_PROCESS *************************-- 
-       output_to_file : process(Instruction_Out)
+       output_to_file : process(CLK)
            variable LINE_O : line; -- Composing a Line to be written to later 
            variable SPACE : character := ' '; -- Character vairiable used for a spce
            variable HEADER_DONE : bit := '1'; -- Variable used to determine when the header is finished being written

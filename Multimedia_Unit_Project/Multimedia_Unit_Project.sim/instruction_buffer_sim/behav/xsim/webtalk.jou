@@ -1,12 +1,12 @@
 #-----------------------------------------------------------
-# Webtalk v2017.3.1 (64-bit)
-# SW Build 2035080 on Fri Oct 20 14:20:01 MDT 2017
-# IP Build 2034413 on Fri Oct 20 15:56:25 MDT 2017
-# Start of session at: Fri Dec  1 19:56:21 2017
-# Process ID: 14060
-# Current directory: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim
-# Command line: wbtcv.exe -mode batch -source C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim/xsim.dir/instruction_buffer_tb_behav/webtalk/xsim_webtalk.tcl -notrace
-# Log file: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim/webtalk.log
-# Journal file: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim\webtalk.jou
+# Webtalk v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Mon Dec  4 02:08:45 2017
+# Process ID: 15148
+# Current directory: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim/xsim.dir/instruction_buffer_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim/webtalk.log
+# Journal file: C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
-source C:/Users/Wilmer -notrace
+source C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.sim/instruction_buffer_sim/behav/xsim/xsim.dir/instruction_buffer_tb_behav/webtalk/xsim_webtalk.tcl -notrace
