@@ -44,8 +44,9 @@
 #endif
 typedef void (*funcp)(char *, char *);
 extern int main(int, char**);
-extern void execute_96(char*, char *);
 extern void execute_97(char*, char *);
+extern void execute_98(char*, char *);
+extern void execute_96(char*, char *);
 extern void execute_61(char*, char *);
 extern void execute_62(char*, char *);
 extern void execute_64(char*, char *);
@@ -70,15 +71,15 @@ extern void execute_93(char*, char *);
 extern void execute_95(char*, char *);
 extern void transaction_0(char*, char*, unsigned, unsigned, unsigned);
 extern void vhdl_transfunc_eventcallback(char*, char*, unsigned, unsigned, unsigned, char *);
-funcp funcTab[26] = {(funcp)execute_96, (funcp)execute_97, (funcp)execute_61, (funcp)execute_62, (funcp)execute_64, (funcp)execute_65, (funcp)execute_67, (funcp)execute_69, (funcp)execute_70, (funcp)execute_71, (funcp)execute_72, (funcp)execute_73, (funcp)execute_74, (funcp)execute_75, (funcp)execute_76, (funcp)execute_77, (funcp)execute_79, (funcp)execute_81, (funcp)execute_83, (funcp)execute_85, (funcp)execute_87, (funcp)execute_91, (funcp)execute_93, (funcp)execute_95, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback};
-const int NumRelocateId= 26;
+funcp funcTab[27] = {(funcp)execute_97, (funcp)execute_98, (funcp)execute_96, (funcp)execute_61, (funcp)execute_62, (funcp)execute_64, (funcp)execute_65, (funcp)execute_67, (funcp)execute_69, (funcp)execute_70, (funcp)execute_71, (funcp)execute_72, (funcp)execute_73, (funcp)execute_74, (funcp)execute_75, (funcp)execute_76, (funcp)execute_77, (funcp)execute_79, (funcp)execute_81, (funcp)execute_83, (funcp)execute_85, (funcp)execute_87, (funcp)execute_91, (funcp)execute_93, (funcp)execute_95, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback};
+const int NumRelocateId= 27;
 
 void relocate(char *dp)
 {
-	iki_relocate(dp, "xsim.dir/Multimedia_Processor_tb_behav/xsim.reloc",  (void **)funcTab, 26);
-	iki_vhdl_file_variable_register(dp + 16992);
-	iki_vhdl_file_variable_register(dp + 17048);
-	iki_vhdl_file_variable_register(dp + 19128);
+	iki_relocate(dp, "xsim.dir/Multimedia_Processor_tb_behav/xsim.reloc",  (void **)funcTab, 27);
+	iki_vhdl_file_variable_register(dp + 17264);
+	iki_vhdl_file_variable_register(dp + 17320);
+	iki_vhdl_file_variable_register(dp + 19440);
 
 
 	/*Populate the transaction function pointer field in the whole net structure */

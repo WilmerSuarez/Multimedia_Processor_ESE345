@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2017.3.1 (64-bit)              -->
+<!-- Product Version: Vivado v2017.3 (64-bit)              -->
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="32" Path="C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr">
+<Project Version="7" Minor="32" Path="C:/Users/Himanshu/Documents/GitHub/ese345-final-project/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="8962e72d61834c9f8d6bad901fd610db"/>
@@ -19,7 +19,7 @@
     <Option Name="CompiledLibDirActivehdl" Val="$PCACHEDIR/compile_simlib/activehdl"/>
     <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val=""/>
-    <Option Name="ActiveSimSet" Val="ALU_2_sim"/>
+    <Option Name="ActiveSimSet" Val="Multimedia_Processor_tb"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPCachePermission" Val="read"/>
@@ -31,7 +31,7 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="481"/>
+    <Option Name="WTXSimLaunchSim" Val="540"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -360,6 +360,7 @@
       </Config>
     </FileSet>
     <FileSet Name="Multimedia_Processor_tb" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/Multimedia_Processor_tb">
+      <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/Multimedia_Processor_tb/new/Multimedia_Processor_tb.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>

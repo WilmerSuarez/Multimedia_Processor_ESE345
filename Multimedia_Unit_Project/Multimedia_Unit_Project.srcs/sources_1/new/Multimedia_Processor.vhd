@@ -19,8 +19,9 @@ entity Multimedia_Processor is
           CLK : in std_logic;
           RESET : in std_logic;
           Write_Enable_buff : in std_logic;
-          Instruction_In : in std_logic_vector(23 downto 0)
+          Instruction_In : in std_logic_vector(23 downto 0);
           --***** OUTPUTS *****-- 
+          Final_Result_o : out std_logic_vector(63 downto 0)
           );
 end Multimedia_Processor;
 
@@ -184,4 +185,6 @@ mux_3 : entity work.mux_3
              LI_Result => Result_LI,
              Final_Result => Final_Result_wire
              );
+             
+Final_Result_o <= Final_Result;
 end Behavioral;
