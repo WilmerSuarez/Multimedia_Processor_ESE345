@@ -27,9 +27,7 @@ architecture Behavioral of Multimedia_Processor_tb is
           CLK : in std_logic;
           RESET : in std_logic;
           Write_Enable_buff : in std_logic;
-          Instruction_In : in std_logic_vector(23 downto 0);
-          --***** OUTPUTS *****--
-          Final_Result_o : out std_logic_vector(63 downto 0)
+          Instruction_In : in std_logic_vector(23 downto 0)
           );
     end component;
     
@@ -39,15 +37,12 @@ architecture Behavioral of Multimedia_Processor_tb is
     signal RESET : std_logic := '1';
     signal Write_Enable_buff : std_logic;
     signal Instruction_In : std_logic_vector(23 downto 0);
- 
-    --OUTPUTS
-    signal Final_Result_o : std_logic_vector(63 downto 0);
- 
+
     -- CLOCK_PERIOD 
     constant clk_period : time := 10 ns;
 begin
     UUT: Multimedia_Processor
-        port map(CLK => CLK, RESET => RESET, Write_Enable_buff => Write_Enable_buff, Instruction_In => Instruction_In, Final_Result_o => Final_Result_o);
+        port map(CLK => CLK, RESET => RESET, Write_Enable_buff => Write_Enable_buff, Instruction_In => Instruction_In);
  
     --***************************** CLOCK_GENERATION_PROCESSS ******************************-- 
     clk_generation: process
@@ -79,7 +74,6 @@ begin
        wait for clk_period;
        RESET <= '0';
        wait for 320ns; -- Wait for 100ns after populating buffer with isntructions
-       
        
        wait;
     end process stimulus;

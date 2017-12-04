@@ -29,7 +29,7 @@ end li_shift;
 architecture Behavioral of li_shift is
 begin
     --******************************** LI_SHIFT_PROCESS *******************************--
-    li_shift_proc : process(Immediate_16, LI_Offset) is
+    li_shift_proc : process(Immediate_16, LI_Offset, RD_Data) is
     begin
         Result <= RD_Data;
         case LI_Offset is
