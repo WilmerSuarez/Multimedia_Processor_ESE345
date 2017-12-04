@@ -31,7 +31,7 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="543"/>
+    <Option Name="WTXSimLaunchSim" Val="558"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -367,10 +367,16 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/Multimedia_Processor_tb/imports/new/Instructions.txt">
+      <File Path="$PSRCDIR/Multimedia_Processor_tb/imports/xsim/Instructions.txt">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PSRCDIR/Multimedia_Processor_tb/new/Instructions.txt"/>
-          <Attr Name="ImportTime" Val="1512282794"/>
+          <Attr Name="ImportPath" Val="$PSIMDIR/Multimedia_Processor_tb/behav/xsim/Instructions.txt"/>
+          <Attr Name="ImportTime" Val="1512371405"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/Multimedia_Processor_tb/imports/xsim/Instructions_matrix.txt">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PSIMDIR/Multimedia_Processor_tb/behav/xsim/Instructions_matrix.txt"/>
+          <Attr Name="ImportTime" Val="1512365976"/>
         </FileInfo>
       </File>
       <Config>

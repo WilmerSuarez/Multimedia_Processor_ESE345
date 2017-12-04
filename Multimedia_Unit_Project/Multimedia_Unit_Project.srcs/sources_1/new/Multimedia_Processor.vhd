@@ -19,7 +19,24 @@ entity Multimedia_Processor is
           CLK : in std_logic;
           RESET : in std_logic;
           Write_Enable_buff : in std_logic;
-          Instruction_In : in std_logic_vector(23 downto 0)
+          Instruction_In : in std_logic_vector(23 downto 0);
+          --***** OUTPUTS *****--
+          --***** IF STAGE *****--
+          Instruction_In_IF : out std_logic_vector(23 downto 0);
+          --***** ID STAGE *****--
+          Data_S1_ID : out std_logic_vector(63 downto 0);
+          Data_S2_ID : out std_logic_vector(63 downto 0);
+          Data_S3_ID : out std_logic_vector(63 downto 0);
+          RS2_Inst_Field_ID : out std_logic_vector(3 downto 0);
+          Opcode_R3_ID : out std_logic_vector(3 downto 0);
+          Opcode_R4_ID : out std_logic_vector(1 downto 0);
+          Register_RD_ID : out std_logic_vector(4 downto 0);
+          Immediate_16_ID : out std_logic_vector(15 downto 0);
+          LI_Offset_ID : out std_logic_vector(1 downto 0);
+          Result_Select_ID : out std_logic_vector(1 downto 0);
+          Register_Write_Enable_ID : out std_logic;
+          --***** EX&WB STAGE *****--
+          Final_Result_EX : out std_logic_vector(63 downto 0)
           );
 end Multimedia_Processor;
 
@@ -52,6 +69,23 @@ signal reg_S2_instr_field_EX : std_logic_vector(3 downto 0);
 signal Reg_write_enable_EX : std_logic;
 signal result_ALU_1, result_ALU_2, Result_LI, Final_Result_wire : std_logic_vector(63 downto 0);
 begin
+
+--***** IF STAGE *****--
+Instruction_In_IF <= Instruction_wire_IF;
+--***** ID STAGE *****--
+Data_S1_ID <= Data_S1_wire;
+Data_S2_ID <= Data_S2_wire;
+Data_S3_ID <= Data_S3_wire;
+RS2_Inst_Field_ID <= Reg_RS2_o_wire(3 downto 0);
+Opcode_R3_ID <= Opcode_R3_o_wire;
+Opcode_R4_ID <= Opcode_R4_o_wire;
+Register_RD_ID <= Register_rd_o_wire;
+Immediate_16_ID <= Immediate_16_o_wire;
+LI_Offset_ID <= LI_Offset_o_wire;
+Result_Select_ID <= Result_Select_wire;
+Register_Write_Enable_ID <= Reg_write_enable_wire;
+--***** EX&WB STAGE *****--
+Final_Result_EX <= Final_Result_wire;
 
 --***************** Program_Counter *****************--
 program_counter : entity work.program_counter_reg
@@ -94,10 +128,10 @@ decoder : entity work.decoder
 --******************** Control_Unit ********************--
 control_unit : entity work.control_unit
     port map(
-        Instruction => instruction_o_wire,
-        Result_Select => Result_Select_wire,
-        S3_Select => S3_Select_wire,
-        Reg_write_enable => Reg_write_enable_wire
+             Instruction => instruction_o_wire,
+             Result_Select => Result_Select_wire,
+             S3_Select => S3_Select_wire,
+             Reg_write_enable => Reg_write_enable_wire
              ); 
 --******************** RS3_Select_Multiplexer ********************--
 mux_2 : entity work.mux_2
