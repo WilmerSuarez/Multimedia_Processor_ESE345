@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1'
+HD_PWD='C:/Users/Wilmer Suarez/Desktop/Repos/Multimedia_Processor_ESE345/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

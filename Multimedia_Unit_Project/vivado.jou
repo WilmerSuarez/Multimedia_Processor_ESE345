@@ -12,3 +12,11 @@
 start_gui
 open_project {C:/Users/Wilmer Suarez/Desktop/Repos/Multimedia_Processor_ESE345/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr}
 update_compile_order -fileset sources_1
+launch_simulation -simset Multimedia_Processor_tb
+source Multimedia_Processor_tb.tcl
+restart
+run 640 ns
+close_sim
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1

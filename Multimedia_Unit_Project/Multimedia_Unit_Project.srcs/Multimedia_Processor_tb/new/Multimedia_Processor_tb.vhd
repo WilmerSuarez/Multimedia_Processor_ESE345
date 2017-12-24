@@ -99,7 +99,7 @@ begin
        variable LINE_OUT : line;
        variable INSTRUCTION : std_logic_vector(23 downto 0);
        variable count : integer := 0;
-       file INSTRUCTION_I : text is in "Instructions_matrix.txt";
+       file INSTRUCTION_I : text is in "Instructions.txt";
        file REG_FILE_O : text is out "register_file.txt";
     begin
        Write_Enable_buff <= '1';
@@ -138,7 +138,6 @@ begin
             writeline(REG_FILE_O, LINE_OUT);
             wait for clk_period; 
        end loop;
-       
        wait;
     end process stimulus;
     

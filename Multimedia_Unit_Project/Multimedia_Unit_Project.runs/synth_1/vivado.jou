@@ -2,11 +2,11 @@
 # Vivado v2017.3.1 (64-bit)
 # SW Build 2035080 on Fri Oct 20 14:20:01 MDT 2017
 # IP Build 2034413 on Fri Oct 20 15:56:25 MDT 2017
-# Start of session at: Sun Dec  3 01:59:55 2017
-# Process ID: 1936
-# Current directory: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1
+# Start of session at: Mon Dec  4 23:32:42 2017
+# Process ID: 9272
+# Current directory: C:/Users/Wilmer Suarez/Desktop/Repos/Multimedia_Processor_ESE345/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1
 # Command line: vivado.exe -log Multimedia_Processor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Multimedia_Processor.tcl
-# Log file: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1/Multimedia_Processor.vds
-# Journal file: C:/Users/Wilmer Suarez/Desktop/ESE_345_PROJECT/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1\vivado.jou
+# Log file: C:/Users/Wilmer Suarez/Desktop/Repos/Multimedia_Processor_ESE345/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1/Multimedia_Processor.vds
+# Journal file: C:/Users/Wilmer Suarez/Desktop/Repos/Multimedia_Processor_ESE345/Multimedia_Unit_Project/Multimedia_Unit_Project.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source Multimedia_Processor.tcl -notrace
