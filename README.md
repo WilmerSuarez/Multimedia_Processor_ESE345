@@ -7,16 +7,17 @@
 	- [Program Counter and Instruction Buffer](#program-counter-and-instruction-buffer)
 	- [Pipeline Registers](#pipeline-registers)
 	- [Instruction Decoder and Control Unit](#instruction-decoder-and-control-unit)
+	- [Register File](#register-file)
+	- [ALU 1 & 2 and Load Immediate Shifter](#alu-1-and-alu-2-and-load-immediate-shifter)
+- [Test Conditions](#test-conditions)
 	- [](#)
-- [](#)
 
 ## Introduction 
 ###### Multimedia Unit Block Diagram
-![alt text](https://i.imgur.com/n6erPm9.png "Multimedia Unit Block Diagram")
+![alt text](https://i.imgur.com/lksLEB2.jpg "Multimedia Unit Block Diagram")
 
 The processor, is a 3-stage pipelined multimedia unit used for Single-Instruction
 Multiple-Data (SIMD) instructions. 
-
 
 ## Design Process
 
@@ -101,7 +102,7 @@ Control Unit. All the inputs for reading registers are provided by the Instructi
 while all the write related signals are connected to the output of the final stage of the 
 pipeline. 
 
-###### ALU 1 & 2 and Load Immediate Shifter
+###### ALU 1 and ALU 2 and Load Immediate Shifter
 ![alt text](https://i.imgur.com/EjAV6k0.png "ALU 1, 2 and Load Immediate Shifter")
 
 The EX&WB stage is the last stage of the pipelined design. This stage computes the values that will be 
@@ -118,3 +119,8 @@ Immediate). The module receives the data of the register that will be written (u
 and the 16-bit immediate with its offset. The output of all these modules are sent to a multiplexer 
 that selects, using the result select signal from the Control Unit, the result that will be written 
 back to the Register File. 
+
+## Test Conditions 
+
+###### Instruction Buffer
+
