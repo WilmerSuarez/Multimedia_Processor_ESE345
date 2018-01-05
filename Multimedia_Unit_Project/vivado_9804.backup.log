@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Sat Dec 23 21:30:38 2017
+# Process ID: 9804
+# Current directory: C:/Users/wilme/Desktop/Repositories/Multimedia_Processor_ESE345/Multimedia_Unit_Project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11000 C:\Users\wilme\Desktop\Repositories\Multimedia_Processor_ESE345\Multimedia_Unit_Project\Multimedia_Unit_Project.xpr
+# Log file: C:/Users/wilme/Desktop/Repositories/Multimedia_Processor_ESE345/Multimedia_Unit_Project/vivado.log
+# Journal file: C:/Users/wilme/Desktop/Repositories/Multimedia_Processor_ESE345/Multimedia_Unit_Project\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/wilme/Desktop/Repositories/Multimedia_Processor_ESE345/Multimedia_Unit_Project/Multimedia_Unit_Project.xpr
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'C:/Users/wilme/Desktop/Repositories/Multimedia_Processor_ESE345/Multimedia_Unit_Project'
+INFO: [Project 1-313] Project file moved from 'C:/Users/Wilmer Suarez/Desktop/Repos/Multimedia_Processor_ESE345/Multimedia_Unit_Project' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.3/data/ip'.
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:07 . Memory (MB): peak = 758.742 ; gain = 86.605
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Dec 23 21:31:11 2017...
