@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Design Process](#design-process)
 	- [Program Counter and Instruction Buffer](#program-counter-and-instruction-buffer)
-	- [Pipeline Registers](#pipeline-registers-DP)
+	- [Pipeline Registers](#pipeline-registers-dp)
 	- [Instruction Decoder and Control Unit](#instruction-decoder-and-control-unit)
 	- [Register File](#register-file-DP)
 	- [ALU 1, ALU 2, and Load Immediate Shifter](#alu-1-alu-2-and-load-immediate-shifter)
