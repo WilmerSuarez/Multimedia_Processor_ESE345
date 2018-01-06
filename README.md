@@ -5,12 +5,19 @@
 - [Introduction](#introduction)
 - [Design Process](#design-process)
 	- [Program Counter and Instruction Buffer](#program-counter-and-instruction-buffer)
-	- [Pipeline Registers](#pipeline-registers)
+	- [Pipeline Registers](#pipeline-registers-DP)
 	- [Instruction Decoder and Control Unit](#instruction-decoder-and-control-unit)
-	- [Register File](#register-file)
-	- [ALU 1 & 2 and Load Immediate Shifter](#alu-1-and-alu-2-and-load-immediate-shifter)
+	- [Register File](#register-file-DP)
+	- [ALU 1, ALU 2, and Load Immediate Shifter](#alu-1-alu-2-and-load-immediate-shifter)
 - [Test Conditions](#test-conditions)
-	- [](#)
+	- [Instruction Buffer](#instruction-buffer)
+	- [Register File](#register-file-TC)
+	- [Program Counter](#program-counter)
+	- [Pipeline Registers](#pipeline-registers-TC)
+	- [ALU 1](#alu-1)
+	- [ALU 2](#alu-2)
+	- [Control Unit](#control-unit)
+	- [Instruction Decoder](#instruction-decoder)
 
 ## Introduction 
 ###### Multimedia Unit Block Diagram
@@ -35,7 +42,7 @@ counter reaches 31, it rolls over to 0 again.
 
 These two units combined form the first stage of the pipeline.   
 
-###### Pipeline Registers
+###### Pipeline Registers DP
 ![alt text](https://i.imgur.com/KEwNitP.png "Pipeline Registers")
 
 The pipeline registers, IF/ID (Instruction Fetch/Instruction Decode) and ID/EX&WB 
@@ -82,7 +89,7 @@ will be written back to the Register File. The last signal, Reg_Write_Enable, is
 allow data to be written to the Register File. The Control Unit only prevents data to be 
 written during a NOP instruction.
 
-###### Register File
+###### Register File DP
 ![alt text](https://i.imgur.com/VFQlFaU.png "Register File")
 
 The register file contains the 32 64-bit registers available to the processor. It is able  
@@ -102,7 +109,7 @@ Control Unit. All the inputs for reading registers are provided by the Instructi
 while all the write related signals are connected to the output of the final stage of the 
 pipeline. 
 
-###### ALU 1 and ALU 2 and Load Immediate Shifter
+###### ALU 1 ALU 2 and Load Immediate Shifter
 ![alt text](https://i.imgur.com/EjAV6k0.png "ALU 1, 2 and Load Immediate Shifter")
 
 The EX&WB stage is the last stage of the pipelined design. This stage computes the values that will be 
@@ -124,3 +131,58 @@ back to the Register File.
 
 ###### Instruction Buffer
 
+The instruction buffer is simply responsible for storing instructions and outputting the instruction
+corresponding to the provided program counter value. To allow testing, additional signals were added for 
+writing to the buffer. A Write Enable signal was added to put the buffer into write mode, and an Instruction In
+signal was added to provide the instruction to place into memory. These signals are only used for testing 
+purposes and not connected to any other part of the processor and thus are not included in the accompanying 
+diagrams. The buffer was tested by simply writing some instructions to it, and then reading it to see if the 
+output value matches the input value. There were no additional error conditions to test for.
+
+###### Register File TC
+
+The register file is responsible for reading/writing to the registers it contains. Thus, it can be verified by 
+checking that the values written can later be read and overwritten. Additionally, a special case must be tested 
+for data forwarding.
+
+###### Program Counter
+
+The program counter is responsible for tracking the progress of the program through a monotonically incrementing 
+counter. However, in addition to that, it is necessary to test the RESET signal to verify that it holds the 
+counter at zero.
+
+###### Pipeline Registers TC
+
+The pipeline registers are just like any other conventional register, thus to verify them, it is necessary to 
+test that they retain their value until the rising edge of the clock.
+
+###### ALU 1
+
+The first ALU is used to compute R3-format instructions, of which there are 16. The testbench verifies the 
+operation of every instruction supported by the ALU. Additionally, some instructions have the special case of 
+being saturated, which is verified separately.
+
+###### ALU 2
+
+The ALU 2 is used to computer R4 format instructions. These instructions are Single-Instruction Multiple-Data 
+instructions. They are also signed instructions with saturation. The instructions were first tested separately to 
+ensure proper functionality. They were then tested for saturation for both the negative and positive 32-bit 
+signed extremes (-2^31 -> (2^31)-1).
+
+###### Load Immediate Shifter
+
+The Load Immediate Shifter needs to preserve portion of the instruction it is not writing to. This was tested by 
+writing an arbitrary instruction to the RD_Data input of the module and an arbitrary 16-bit immediate to the 
+imm16 input. The 16-bit immediate was sequentially offset to the four different possible locations of the 64-bit 
+result signal. 
+
+###### Control Unit
+
+The Control Unit was tested by inputting the different types of instructions available and assuring the output 
+control signals were correct. A Load Immediate (R1), two R3 format instructions (NOP and a select other), and an
+R4 format instruction. 
+
+###### Instruction Decoder
+
+The decoder was tested using arbitrary instructions and ensuring that the generated subset of signals were 
+correct. 
